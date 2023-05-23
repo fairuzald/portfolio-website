@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import type { PortfolioPageProps } from "@/types/portfolio";
 import SearchIcon from "@/components/icons/SearchIcon";
 import CrossIcon from "@/components/icons/CrossIcon";
 import type { ReactElement } from "react";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
+import { StructuredText } from "react-datocms/structured-text";
 
 const PortfolioPreview = ({
   portfolio,
@@ -39,7 +40,12 @@ const PortfolioPreview = ({
     setSearch("");
     setFilteredData(portfolio);
   }
-
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsMounted(true);
+    }
+  }, []);
   return (
     <>
       <PageHead
@@ -135,7 +141,10 @@ const PortfolioPreview = ({
                       {project.title}
                     </h3>
                     <p className="mb-5 line-clamp-3 text-[2.21vh] font-medium text-slate-400">
-                      {project.description}{" "}
+                      {isMounted && 
+                      
+                      <StructuredText data={project.description} />
+                      }
                     </p>
                     <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
                       {project.app.length > 4
@@ -175,7 +184,9 @@ const dataNaNavbar = [
 ];
 
 PortfolioPreview.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutPagePreview dataNavbar={dataNaNavbar}>{page}</LayoutPagePreview>;
+  return (
+    <LayoutPagePreview dataNavbar={dataNaNavbar}>{page}</LayoutPagePreview>
+  );
 };
 export default PortfolioPreview;
 
@@ -199,7 +210,9 @@ export async function getStaticProps() {
               height
             }
             title
-            description
+            description {
+              value
+            }
             app
             id
           }

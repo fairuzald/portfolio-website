@@ -141,7 +141,9 @@ export async function getStaticProps() {
             height
           }
           title
-          description
+          description {
+            value
+          }
           app
         }
         allPosts {

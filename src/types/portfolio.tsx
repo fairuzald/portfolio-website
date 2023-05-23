@@ -1,3 +1,4 @@
+import type { Document } from "datocms-structured-text-utils";
 export interface PortfolioImages {
   id: number;
   url: string;
@@ -9,7 +10,7 @@ export interface PortfolioImages {
 export interface PortfolioPageProps {
   id: string;
   title: string;
-  description: string;
+  description: Document;
   image: PortfolioImages[];
   app: string[];
 }

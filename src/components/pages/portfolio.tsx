@@ -74,7 +74,7 @@ export default function Portfolio({
                       {project.title}
                     </h3>
                     <p className="mb-5 line-clamp-3 text-[2.21vh] font-medium text-slate-400">
-                      {project.description}{" "}
+                      <StructuredText data={project.description}/>
                     </p>
                     <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
                       {project.app.length > 4
