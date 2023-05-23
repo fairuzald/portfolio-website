@@ -8,11 +8,14 @@ import CrossIcon from "@/components/icons/CrossIcon";
 import type { ReactElement } from "react";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
 import { StructuredText } from "react-datocms/structured-text";
+import type { Document } from "datocms-structured-text-utils";
 
 const PortfolioPreview = ({
   portfolio,
+  portfolioDetailsDescription,
 }: {
   portfolio: PortfolioPageProps[];
+  portfolioDetailsDescription: Document;
 }) => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState(portfolio);
@@ -56,7 +59,7 @@ const PortfolioPreview = ({
       />
       <section
         id="#"
-        className="min-h-screen w-full bg-gradient-to-b from-[#22273B] to-[#1C2034]  px-20 py-[11vh] lg:py-[18vh]"
+        className="min-h-screen w-full overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034]  px-20 py-[11vh] lg:py-[18vh]"
       >
         <div className="w-full px-4">
           <div className="mx-auto mb-10 max-w-xl text-center">
@@ -72,8 +75,9 @@ const PortfolioPreview = ({
               data-aos-duration="600"
               data-aos="slide-right"
             >
-              Here are some of the projects I have made. Regarding other project
-              details, you can see via the view more button under the project
+              {isMounted && (
+                <StructuredText data={portfolioDetailsDescription} />
+              )}
             </p>
           </div>
           <div
@@ -141,10 +145,9 @@ const PortfolioPreview = ({
                       {project.title}
                     </h3>
                     <p className="mb-5 line-clamp-3 text-[2.21vh] font-medium text-slate-400">
-                      {isMounted && 
-                      
-                      <StructuredText data={project.description} />
-                      }
+                      {isMounted && (
+                        <StructuredText data={project.description} />
+                      )}
                     </p>
                     <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
                       {project.app.length > 4
@@ -181,6 +184,7 @@ const PortfolioPreview = ({
 const dataNaNavbar = [
   { href: "/", context: "Home" },
   { href: "#", context: "Menu Portfolio" },
+  { href: "/post", context: "Menu Post" },
 ];
 
 PortfolioPreview.getLayout = function getLayout(page: ReactElement) {
@@ -202,6 +206,11 @@ export async function getStaticProps() {
       body: JSON.stringify({
         query: `
         {
+          homePage {
+            portfolioDetailsDescription {
+              value
+            }
+          }
           allPortfolios {
             image {
               url
@@ -225,6 +234,8 @@ export async function getStaticProps() {
   return {
     props: {
       portfolio: res.data.allPortfolios,
+      portfolioDetailsDescription:
+        res.data.homePage.portfolioDetailsDescription,
     },
   };
 }

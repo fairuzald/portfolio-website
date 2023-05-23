@@ -14,7 +14,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioPageProps }) => {
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <div className="w-full overflow-x-hidden flex min-h-[100vh] flex-col items-center bg-gradient-to-b from-[#1C2036] to-[#22273B] pb-[8vh] pt-[11vh] lg:pt-[20vh]">
+      <div className="flex min-h-[100vh] w-full flex-col items-center overflow-x-hidden bg-gradient-to-b from-[#1C2036] to-[#22273B] pb-[8vh] pt-[11vh] lg:pt-[20vh]">
         <p
           className="mb-[0.925vh] w-full flex-wrap px-10 text-center text-[1.6rem] font-bold text-primary md:text-[1.8rem] lg:text-[2.1rem]"
           data-aos="zoom-in-down"
