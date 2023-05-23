@@ -12,11 +12,14 @@ import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import EmailIcon from "@/components/icons/EmailIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
+import Post from "@/components/pages/post";
+import type { PostInterface } from "@/types/post";
 
 const Home: NextPage<{
   homePage: HomePageProps;
   portfolio: PortfolioPageProps[];
-}> = ({ homePage, portfolio }) => {
+  post: PostInterface[]
+}> = ({ homePage, portfolio, post }) => {
   const socialLinks = [
     {
       href: "https://github.com/fairuzald",
@@ -75,6 +78,7 @@ const Home: NextPage<{
             title={homePage.portfolioTitleSection}
             description={homePage.portfolioDescription}
           />
+          <Post postTitle={homePage.postTitleSection} postData={post} postDescription={homePage.postDescription} recentText={homePage.recentPostSubtitle} buttonTextViewMore={homePage.buttonTextPostMore}/>
         </>
       </Layout>
     </>
@@ -145,6 +149,22 @@ export async function getStaticProps() {
           description
           app
         }
+        allPosts {
+          title
+          show
+          tag
+          id
+          image {
+            width
+            url
+            title
+            height
+          }
+          description {
+            value
+          }
+          textLinkDetails
+        }
       }
       `,
       }),
@@ -154,6 +174,7 @@ export async function getStaticProps() {
   return {
     props: {
       portfolio: res.data.allPortfolios,
+      post: res.data.allPosts,
       homePage: res.data.homePage,
     },
   };

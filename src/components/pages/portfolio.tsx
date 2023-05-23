@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { PortfolioPageProps } from "@/types/portfolio";
-import type { PortfolioImages } from "@/types/portfolio";
 import type { Document } from "datocms-structured-text-utils";
 import { StructuredText } from "react-datocms/structured-text";
 import { useEffect, useState } from "react";
