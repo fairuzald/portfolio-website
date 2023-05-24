@@ -58,7 +58,7 @@ const PortfolioPreview = ({
         faviconDirectory="/LogoWebsite.png"
       />
       <section
-        id="#"
+        id="home"
         className="min-h-screen w-full overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034]  px-20 py-[11vh] lg:py-[18vh]"
       >
         <div className="w-full px-4">
@@ -183,7 +183,7 @@ const PortfolioPreview = ({
 };
 const dataNaNavbar = [
   { href: "/", context: "Home" },
-  { href: "#", context: "Menu Portfolio" },
+  { href: "#home", context: "Menu Portfolio" },
   { href: "/post", context: "Menu Post" },
 ];
 

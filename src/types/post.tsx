@@ -1,6 +1,7 @@
 import type { Document } from "datocms-structured-text-utils";
 
 interface Image {
+  id:string
   url: string;
   width: number;
   height: number;

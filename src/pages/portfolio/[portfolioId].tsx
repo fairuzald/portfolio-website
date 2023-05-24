@@ -66,6 +66,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioPageProps }) => {
 const data = [
   { href: "/", context: "Home" },
   { href: "/portfolio", context: "Menu Portfolio" },
+  { href: "/post", context: "Menu Post" },
 ];
 PortfolioDetails.getLayout = function getLayout(page: ReactElement) {
   return (
