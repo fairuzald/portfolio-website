@@ -1,9 +1,10 @@
 import Link from "next/link";
+import type { ReactElement } from "react";
 
-export default function PageNotFound() {
+const PageNotFound = () => {
   return (
     <>
-      <div className="m-auto flex h-[100vh] w-[100vw] flex-col items-center justify-center gap-4">
+      <div className="m-auto flex h-[100vh] w-full flex-col items-center justify-center gap-4 overflow-hidden">
         <p className="text-2xl font-bold text-primary lg:text-4xl">
           Page Not Found
         </p>
@@ -16,4 +17,9 @@ export default function PageNotFound() {
       </div>
     </>
   );
-}
+};
+
+PageNotFound.getLayout = function getLayout(page: ReactElement) {
+  return <>{page}</>;
+};
+export default PageNotFound;

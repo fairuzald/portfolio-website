@@ -1,5 +1,4 @@
 import { type NextPage } from "next";
-import Layout from "@/components/Layout";
 import PageHead from "@/components/PageHead";
 import Hero from "@/components/pages/hero";
 import About from "@/components/pages/about";
@@ -56,8 +55,6 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <Layout>
-        <>
           <Hero />
           <About
             aboutTitle={homePage.aboutTitle}
@@ -80,8 +77,6 @@ const Home: NextPage<{
           />
           <Post postTitle={homePage.postTitleSection} postData={post} postDescription={homePage.postDescription} recentText={homePage.recentPostSubtitle} buttonTextViewMore={homePage.buttonTextPostMore}/>
         </>
-      </Layout>
-    </>
   );
 };
 
@@ -146,7 +141,9 @@ export async function getStaticProps() {
             height
           }
           title
-          description
+          description {
+            value
+          }
           app
         }
         allPosts {
