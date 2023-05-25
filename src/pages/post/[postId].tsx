@@ -96,7 +96,7 @@ export async function getStaticPaths() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "Bearer 8d829e204d4422697be4181a3febfa",
+        Authorization: `Bearer ${process.env.CMS_API_TOKEN}`,
       },
       body: JSON.stringify({
         query: `
