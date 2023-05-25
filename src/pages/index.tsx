@@ -17,7 +17,7 @@ import type { PostInterface } from "@/types/post";
 const Home: NextPage<{
   homePage: HomePageProps;
   portfolio: PortfolioPageProps[];
-  post: PostInterface[]
+  post: PostInterface[];
 }> = ({ homePage, portfolio, post }) => {
   const socialLinks = [
     {
@@ -55,28 +55,34 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-          <Hero />
-          <About
-            aboutTitle={homePage.aboutTitle}
-            introductionSubtitle={homePage.introductionSubtitle}
-            introductionDescription={homePage.introductionDescription}
-            contactDescription={homePage.contactDescription}
-            contactSubtitle={homePage.contactSubtitle}
-            socialLinks={socialLinks}
-          />
-          <Resume
-            title={homePage.resumeTitleSection}
-            description={homePage.descriptionResume}
-            buttonTextCV={homePage.buttonTextCv}
-            urlCV={homePage.cvUrl}
-          />
-          <Portfolio
-            data={portfolio}
-            title={homePage.portfolioTitleSection}
-            description={homePage.portfolioDescription}
-          />
-          <Post postTitle={homePage.postTitleSection} postData={post} postDescription={homePage.postDescription} recentText={homePage.recentPostSubtitle} buttonTextViewMore={homePage.buttonTextPostMore}/>
-        </>
+      <Hero />
+      <About
+        aboutTitle={homePage.aboutTitle}
+        introductionSubtitle={homePage.introductionSubtitle}
+        introductionDescription={homePage.introductionDescription}
+        contactDescription={homePage.contactDescription}
+        contactSubtitle={homePage.contactSubtitle}
+        socialLinks={socialLinks}
+      />
+      <Resume
+        title={homePage.resumeTitleSection}
+        description={homePage.descriptionResume}
+        buttonTextCV={homePage.buttonTextCv}
+        urlCV={homePage.cvUrl}
+      />
+      <Portfolio
+        data={portfolio}
+        title={homePage.portfolioTitleSection}
+        description={homePage.portfolioDescription}
+      />
+      <Post
+        postTitle={homePage.postTitleSection}
+        postData={post}
+        postDescription={homePage.postDescription}
+        recentText={homePage.recentPostSubtitle}
+        buttonTextViewMore={homePage.buttonTextPostMore}
+      />
+    </>
   );
 };
 
@@ -88,7 +94,7 @@ export async function getStaticProps() {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: "Bearer 8d829e204d4422697be4181a3febfa",
+        Authorization: `Bearer ${process.env.CMS_API_TOKEN}`,
       },
       body: JSON.stringify({
         query: `
