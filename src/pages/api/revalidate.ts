@@ -12,7 +12,7 @@ export default async function handler(
   }
 
   // Check for secret token validation
-  if (req.query.secret !== "b3c947d98b14e4f3466cb5d75fcacf2a71e73e273d703c98e19b68ef6be3f6aaf7f6f8d3a2fbc04e5c35e6d0b6ee28ce") {
+  if (req.query.secret !== process.env.CMS_REVALIDATE_TOKEN) {
     return res.status(401).json({ message: "Invalid Token" });
   }
 
