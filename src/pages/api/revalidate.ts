@@ -33,9 +33,7 @@ export default async function handler(
     // Revalidate Multiple Instance (if there is one)
     if (idToRevalidate && pageToRevalidate) {
       await res.revalidate(`/${pageToRevalidate}/${idToRevalidate}`);
-    } else if (idToRevalidate && !pageToRevalidate) {
-      await res.revalidate(`/${pageToRevalidate}`);
-    }
+    } 
     return res.status(200).json({ message: "Success revalidating" });
   } catch (err) {
     // Revalidate error
