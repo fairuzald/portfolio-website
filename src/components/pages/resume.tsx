@@ -1,13 +1,9 @@
+import type { BubbleExperienceProps } from "@/types/homePage";
 import type { Document } from "datocms-structured-text-utils";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms/structured-text";
-interface BubbleExperienceProps {
-  id: string;
-  experienceTitle: string;
-  durationText: string;
-  durationBubble: string;
-}
+
 interface ResumeProps {
   title: string;
   description: Document;
@@ -57,7 +53,7 @@ const Resume: NextPage<ResumeProps> = ({
                   </span>
                   
                   <div className="text-[1.8vh]">
-                    {item.durationText}
+                    {item.durationTitle}
                     <span className="mb-2 mt-1 block text-[1.9vh] lg:text-[2.5vh]">
                       {item.experienceTitle}
                     </span>

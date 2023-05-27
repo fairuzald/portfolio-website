@@ -10,13 +10,13 @@ export default function Portfolio({
   title,
   description,
   buttonText,
-  recentText
+  recentText,
 }: {
   portfolioData: PortfolioProps[];
   title: string;
   description: Document;
-  buttonText:string
-  recentText:string;
+  buttonText: string;
+  recentText: string;
 }) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -57,7 +57,10 @@ export default function Portfolio({
               key={project.id}
               className="flex w-full flex-col px-4 duration-300 hover:scale-[1.05] hover:text-primary lg:w-1/2 xl:w-1/3"
             >
-              <Link href={`/portfolio/`}>
+              <Link
+                href={`portfolio/${project.id}
+                `}
+              >
                 <div
                   className="mb-10 overflow-hidden rounded-2xl bg-back shadow-lg"
                   data-aos="flip-right"
@@ -70,7 +73,7 @@ export default function Portfolio({
                       alt={project.image[0]?.title}
                       width={project.image[0]?.width}
                       height={project.image[0]?.height}
-                      className="mb-[1.38vh] w-full h-[270px]"
+                      className="mb-[1.38vh] h-[270px] w-full"
                     />
                   )}
                   <div className="flex flex-1 flex-col px-10 py-8">
@@ -78,7 +81,9 @@ export default function Portfolio({
                       {project.title}
                     </h3>
                     <p className="mb-5 line-clamp-3 text-[2.21vh] font-medium text-slate-400">
-                      <StructuredText data={project.description}/>
+                      {isMounted && (
+                        <StructuredText data={project.description} />
+                      )}
                     </p>
                     <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
                       {project.app.length > 4
