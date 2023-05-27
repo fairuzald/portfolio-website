@@ -8,7 +8,7 @@ interface Image {
   title: string;
 }
 
-export interface PostInterface {
+export interface PostProps {
   id: string;
   title: string;
   description: Document;

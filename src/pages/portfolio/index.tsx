@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
-import type { PortfolioPageProps } from "@/types/portfolio";
+import type { PortfolioProps } from "@/types/portfolio";
 import SearchIcon from "@/components/icons/SearchIcon";
 import CrossIcon from "@/components/icons/CrossIcon";
 import type { ReactElement } from "react";
@@ -14,7 +14,7 @@ const PortfolioPreview = ({
   portfolio,
   portfolioDetailsDescription,
 }: {
-  portfolio: PortfolioPageProps[];
+  portfolio: PortfolioProps[];
   portfolioDetailsDescription: Document;
 }) => {
   const [search, setSearch] = useState("");
@@ -22,7 +22,7 @@ const PortfolioPreview = ({
 
   function handleSearch(search: string) {
     setSearch(search);
-    const newData = portfolio.filter((itemData: PortfolioPageProps) => {
+    const newData = portfolio.filter((itemData: PortfolioProps) => {
       if (
         itemData.title
           .toLocaleLowerCase()
@@ -118,7 +118,7 @@ const PortfolioPreview = ({
           </h1>
         </div>
         <div className="mt-10 flex flex-wrap items-center justify-center ">
-          {filteredData.map((project: PortfolioPageProps) => (
+          {filteredData.map((project: PortfolioProps) => (
             <div
               role="button"
               key={project.id}

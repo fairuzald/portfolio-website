@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { type ReactElement, useEffect, useState } from "react";
-import type { PostInterface } from "@/types/post";
+import type { PostProps } from "@/types/post";
 import PageHead from "@/components/PageHead";
 import SearchIcon from "@/components/icons/SearchIcon";
 import CrossIcon from "@/components/icons/CrossIcon";
@@ -14,14 +14,14 @@ const PostDetail = ({
   posts,
 }: {
   postDetailsDescription: Document;
-  posts: PostInterface[];
+  posts: PostProps[];
 }) => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState(posts);
 
   function handleSearch(search: string) {
     setSearch(search);
-    const newData = posts.filter((itemData: PostInterface) => {
+    const newData = posts.filter((itemData: PostProps) => {
       if (
         itemData.title
           .toLocaleLowerCase()
@@ -115,7 +115,7 @@ const PostDetail = ({
           </h1>
         </div>
         <div className="mx-auto flex w-full flex-wrap justify-center px-2 xl:w-10/12">
-          {filteredData.map((item: PostInterface) => (
+          {filteredData.map((item: PostProps) => (
             <div
               key={item.id}
               className="mb-12 w-full p-6 md:w-1/2 "

@@ -1,23 +1,23 @@
 import { type NextPage } from "next";
 import PageHead from "@/components/PageHead";
-import Hero from "@/components/pages/hero";
-import About from "@/components/pages/about";
-import Resume from "@/components/pages/resume";
-import Portfolio from "@/components/pages/portfolio";
-import { type PortfolioPageProps } from "@/types/portfolio";
+import { type PortfolioProps } from "@/types/portfolio";
 import { type HomePageProps } from "@/types/homePage";
 import GithubIcon from "@/components/icons/GithubIcon";
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import EmailIcon from "@/components/icons/EmailIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
-import Post from "@/components/pages/post";
-import type { PostInterface } from "@/types/post";
+import type { PostProps } from "@/types/post";
+import Hero from "@/components/pages/Hero";
+import About from "@/components/pages/About";
+import Resume from "@/components/pages/Resume";
+import Portfolio from "@/components/pages/Portfolio";
+import Post from "@/components/pages/Post";
 
 const Home: NextPage<{
   homePage: HomePageProps;
-  portfolio: PortfolioPageProps[];
-  post: PostInterface[];
+  portfolio: PortfolioProps[];
+  post: PostProps[];
 }> = ({ homePage, portfolio, post }) => {
   const socialLinks = [
     {

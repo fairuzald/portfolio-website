@@ -1,20 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { PostInterface } from "@/types/post";
+import type { PostProps } from "@/types/post";
 import type { NextPage } from "next";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
 import { useEffect, useState } from "react";
 
-interface PostProps {
+interface PostPageProps {
   postTitle: string;
   recentText: string;
   postDescription: Document;
-  postData: PostInterface[];
+  postData: PostProps[];
   buttonTextViewMore: string;
 }
 
-const Post: NextPage<PostProps> = ({
+const Post: NextPage<PostPageProps> = ({
   postTitle,
   recentText,
   postDescription,
@@ -56,7 +56,7 @@ const Post: NextPage<PostProps> = ({
         >
           {recentText}
         </h1>
-        {postData.slice(0, 2).map((post: PostInterface) => (
+        {postData.slice(0, 2).map((post: PostProps) => (
           <div
             className="mb-12 w-full p-6 md:w-1/2"
             key={post.id}

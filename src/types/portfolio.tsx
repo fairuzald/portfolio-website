@@ -7,7 +7,7 @@ export interface PortfolioImages {
   height: number;
 }
 
-export interface PortfolioPageProps {
+export interface PortfolioProps {
   id: string;
   title: string;
   description: Document;

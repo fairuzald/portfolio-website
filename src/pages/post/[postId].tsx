@@ -1,11 +1,12 @@
 import React, { type ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
-import type { PostInterface } from "@/types/post";
+import type { PostProps } from "@/types/post";
 import PageHead from "@/components/PageHead";
 import { StructuredText } from "react-datocms/structured-text";
+import type { GetStaticPropsContext } from 'next';
 import Navbar from "@/components/Navbar";
 
-const PostDetails = ({ post }: { post: PostInterface }) => {
+const PostDetails = ({ post }: { post: PostProps }) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -129,7 +130,7 @@ export async function getStaticPaths() {
     })
   ).json();
 
-  const paths = res.data.allPosts.map((list: PostInterface) => {
+  const paths = res.data.allPosts.map((list: PostProps) => {
     return {
       params: {
         postId: `${list.id}`,
@@ -143,7 +144,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(ctx: any) {
+export async function getStaticProps(ctx: GetStaticPropsContext) {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -182,8 +183,8 @@ export async function getStaticProps(ctx: any) {
       }),
     })
   ).json();
-  const cleanData = res.data.allPosts.filter((item: PostInterface) => {
-    return item.id.toString() === ctx.params.postId;
+  const cleanData = res.data.allPosts.filter((item: PostProps) => {
+    return item.id.toString() === ctx.params?.postId;
   });
   return {
     props: {

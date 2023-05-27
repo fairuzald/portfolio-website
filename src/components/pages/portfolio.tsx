@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { PortfolioPageProps } from "@/types/portfolio";
+import type { PortfolioProps } from "@/types/portfolio";
 import type { Document } from "datocms-structured-text-utils";
 import { StructuredText } from "react-datocms/structured-text";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ export default function Portfolio({
   title,
   description,
 }: {
-  data: PortfolioPageProps[];
+  data: PortfolioProps[];
   title: string;
   description: Document;
 }) {
@@ -47,7 +47,7 @@ export default function Portfolio({
       </div>
       <div className="flex h-fit flex-wrap items-stretch justify-center">
         {data.length >= 3 &&
-          data.slice(0, 3).map((project: PortfolioPageProps) => (
+          data.slice(0, 3).map((project: PortfolioProps) => (
             <div
               role="button"
               key={project.id}
