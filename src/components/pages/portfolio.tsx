@@ -6,13 +6,17 @@ import { StructuredText } from "react-datocms/structured-text";
 import { useEffect, useState } from "react";
 
 export default function Portfolio({
-  data,
+  portfolioData,
   title,
   description,
+  buttonText,
+  recentText
 }: {
-  data: PortfolioProps[];
+  portfolioData: PortfolioProps[];
   title: string;
   description: Document;
+  buttonText:string
+  recentText:string;
 }) {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -42,12 +46,12 @@ export default function Portfolio({
           </p>
         </div>
         <h1 className="mb-5 text-2xl font-bold" data-aos="zoom-out-right">
-          Recent Project
+          {recentText}
         </h1>
       </div>
       <div className="flex h-fit flex-wrap items-stretch justify-center">
-        {data.length >= 3 &&
-          data.slice(0, 3).map((project: PortfolioProps) => (
+        {portfolioData.length >= 3 &&
+          portfolioData.slice(0, 3).map((project: PortfolioProps) => (
             <div
               role="button"
               key={project.id}
@@ -109,7 +113,7 @@ export default function Portfolio({
           data-aos-duration="200"
         >
           <button className="rounded-full bg-gradient-to-br from-primary to-primary px-[3vh] py-[1.8vh] text-[1.8vh]  font-bold text-white shadow-md shadow-primary transition duration-300 ease-in-out hover:scale-110 hover:from-[#11e0a5] hover:to-[#5430e2] hover:opacity-80 hover:shadow-xl  lg:px-8 lg:py-3 xl:text-[2.3vh]">
-            <Link href="/portfolio">View More Projects</Link>
+            <Link href="/portfolio">{buttonText}</Link>
           </button>
         </div>
       </div>

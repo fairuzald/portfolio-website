@@ -7,19 +7,19 @@ import type { Document } from "datocms-structured-text-utils";
 import { useEffect, useState } from "react";
 
 interface PostPageProps {
-  postTitle: string;
+  title: string;
   recentText: string;
-  postDescription: Document;
+  description: Document;
   postData: PostProps[];
-  buttonTextViewMore: string;
+  buttonText: string;
 }
 
 const Post: NextPage<PostPageProps> = ({
-  postTitle,
+  title,
   recentText,
-  postDescription,
+  description,
   postData,
-  buttonTextViewMore,
+  buttonText,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -38,14 +38,14 @@ const Post: NextPage<PostPageProps> = ({
             className="mb-3 text-[4.6vh] font-semibold text-primary"
             data-aos="zoom-out-down"
           >
-            {postTitle}
+            {title}
           </h2>
           <p
             className="font-base text-justify text-[2.3vh] text-white"
             data-aos="zoom-in"
             data-aos-delay="200"
           >
-            {isMounted && <StructuredText data={postDescription} />}
+            {isMounted && <StructuredText data={description} />}
           </p>
         </div>
       </div>
@@ -99,7 +99,7 @@ const Post: NextPage<PostPageProps> = ({
         ))}
         <div data-aos="zoom-in" data-aos-duration="200">
           <button className="rounded-full bg-gradient-to-br from-primary to-primary px-[3vh] py-[1.8vh] text-[1.8vh]  font-bold text-white shadow-md shadow-primary transition duration-300  ease-in-out hover:scale-110 hover:from-[#11e0a5] hover:to-[#5430e2] hover:opacity-80 hover:shadow-xl  lg:px-8 lg:py-3 xl:text-[2.3vh]">
-            <Link href="/post">{buttonTextViewMore}</Link>
+            <Link href="/post">{buttonText}</Link>
           </button>
         </div>
       </div>

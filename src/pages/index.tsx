@@ -55,7 +55,11 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <Hero />
+      <Hero
+        greetingText="Hello 👋, I am"
+        textButton="Contact Me"
+        typeWriterTextArray={["Moh Fairuz Alauddin Yahya", "Fairuz"]}
+      />
       <About
         aboutTitle={homePage.aboutTitle}
         introductionSubtitle={homePage.introductionSubtitle}
@@ -69,18 +73,34 @@ const Home: NextPage<{
         description={homePage.descriptionResume}
         buttonTextCV={homePage.buttonTextCv}
         urlCV={homePage.cvUrl}
+        bubbleExperience={[
+          {
+            id: "1",
+            experienceTitle: "Physics Olympiad Tutor",
+            durationText: ">2 Tahun",
+            durationBubble: "2+",
+          },
+          {
+            id: "2",
+            experienceTitle: "Web Development",
+            durationText: ">1 Tahun",
+            durationBubble: "1+",
+          },
+        ]}
       />
       <Portfolio
-        data={portfolio}
+        portfolioData={portfolio}
+        recentText="Recent Project"
         title={homePage.portfolioTitleSection}
         description={homePage.portfolioDescription}
+        buttonText="View More Projects"
       />
       <Post
-        postTitle={homePage.postTitleSection}
+        title={homePage.postTitleSection}
         postData={post}
-        postDescription={homePage.postDescription}
+        description={homePage.postDescription}
         recentText={homePage.recentPostSubtitle}
-        buttonTextViewMore={homePage.buttonTextPostMore}
+        buttonText={homePage.buttonTextPostMore}
       />
     </>
   );

@@ -2,18 +2,25 @@ import type { Document } from "datocms-structured-text-utils";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms/structured-text";
-
+interface BubbleExperienceProps {
+  id: string;
+  experienceTitle: string;
+  durationText: string;
+  durationBubble: string;
+}
 interface ResumeProps {
   title: string;
   description: Document;
   urlCV: string;
   buttonTextCV: string;
+  bubbleExperience: BubbleExperienceProps[];
 }
 const Resume: NextPage<ResumeProps> = ({
   title,
   description,
   urlCV,
   buttonTextCV,
+  bubbleExperience,
 }) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
@@ -39,28 +46,25 @@ const Resume: NextPage<ResumeProps> = ({
             data-aos-duration="600"
             data-aos="zoom-in-right"
           >
-            <div className="flex w-1/2 flex-col items-center lg:h-1/2 lg:w-full lg:flex-row">
-              <span className="mb-2 mr-2 flex h-[8vh] w-[8vh] items-center justify-center rounded-full bg-gradient-to-br from-[#11e0a5] to-[#5430e2] text-[2.4vh] font-semibold lg:mx-10">
-                2+
-              </span>
-              <div className="text-[1.8vh]">
-                {">1 tahun"}
-                <span className="mb-2 mt-1 block text-[1.9vh] lg:text-[2.5vh]">
-                  Physics Olympiad Tutor
-                </span>
-              </div>
-            </div>
-            <div className="flex w-1/2 flex-col items-center lg:h-1/2 lg:w-full lg:flex-row">
-              <span className="mb-2 flex  h-[8vh] w-[8vh] items-center justify-center rounded-full bg-gradient-to-br from-[#11e0a5] to-[#5430e2] text-[2.4vh] font-semibold lg:mx-10">
-                1+
-              </span>
-              <div className="text-[1.8vh]">
-                {"<1 tahun"}
-                <span className="mb-2 mt-1 block text-[1.9vh]  lg:text-[2.5vh]">
-                  Web Development
-                </span>
-              </div>
-            </div>
+            {bubbleExperience.map((item) => {
+              return (
+                <div
+                  key={item.id}
+                  className="flex w-1/2 flex-col items-center lg:h-1/2 lg:w-full lg:flex-row"
+                >
+                  <span className="mb-2 flex  h-[8vh] w-[8vh] items-center justify-center rounded-full bg-gradient-to-br from-[#11e0a5] to-[#5430e2] text-[2.4vh] font-semibold lg:mx-10">
+                    {item.durationBubble}
+                  </span>
+                  
+                  <div className="text-[1.8vh]">
+                    {item.durationText}
+                    <span className="mb-2 mt-1 block text-[1.9vh] lg:text-[2.5vh]">
+                      {item.experienceTitle}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
           <div className="2xl:px-17 w-full px-4 text-center lg:w-7/12 lg:text-right xl:px-10">
             <p
