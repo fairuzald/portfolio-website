@@ -1,4 +1,3 @@
-import type { NextPage } from "next";
 import Link from "next/link";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
@@ -25,7 +24,7 @@ const About = ({
   contactSubtitle,
   contactDescription,
   socialLinks,
-}:AboutProps) => {
+}: AboutProps) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -35,7 +34,7 @@ const About = ({
   return (
     <section
       id="about"
-      className="w-full overflow-x-hidden px-20 pb-[13vh] pt-[15vh] md:pt-[27vh] lg:pt-[32vh] bg-[#22273B]"
+      className="w-full overflow-x-hidden bg-[#22273B] px-20 pb-[13vh] pt-[15vh] md:pt-[27vh] lg:pt-[32vh]"
     >
       <div className="flex flex-wrap">
         <div

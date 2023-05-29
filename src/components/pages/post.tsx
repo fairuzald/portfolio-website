@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { PostProps } from "@/types/post";
-import type { NextPage } from "next";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
 import { useEffect, useState } from "react";
