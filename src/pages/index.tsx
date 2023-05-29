@@ -24,27 +24,27 @@ const Home: NextPage<{
     {
       href: homePage.githubUrl,
       icon: <GithubIcon />,
-      title: homePage.githubTitle
+      title: homePage.githubTitle,
     },
     {
       href: homePage.linkedinUrl,
       icon: <LinkedInIcon />,
-      title: homePage.linkedinTitle
+      title: homePage.linkedinTitle,
     },
     {
       href: homePage.emailUrl,
       icon: <EmailIcon />,
-      title: homePage.emailTitle
+      title: homePage.emailTitle,
     },
     {
       href: homePage.instagramUrl,
       icon: <InstagramIcon />,
-      title: homePage.instagramTitle
+      title: homePage.instagramTitle,
     },
     {
       href: homePage.whatsappUrl,
       icon: <WhatsappIcon />,
-      title: homePage.whatsappTitle
+      title: homePage.whatsappTitle,
     },
   ];
 
@@ -56,40 +56,42 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <Hero
-        greetingText={homePage.greetingText}
-        textButton={homePage.heroButtonText}
-        typeWriterTextArray={homePage.typeWriterText}
-      />
-      <About
-        aboutTitle={homePage.aboutTitle}
-        introductionSubtitle={homePage.introductionSubtitle}
-        introductionDescription={homePage.introductionDescription}
-        contactDescription={homePage.contactDescription}
-        contactSubtitle={homePage.contactSubtitle}
-        socialLinks={socialLinks}
-      />
-      <Resume
-        title={homePage.resumeTitleSection}
-        description={homePage.descriptionResume}
-        buttonTextCV={homePage.buttonTextCv}
-        urlCV={homePage.cvUrl}
-        bubbleExperience={bubbleExp}
-      />
-      <Portfolio
-        title={homePage.portfolioTitleSection}
-        portfolioData={portfolio}
-        recentText={homePage.recentPortfolioSubtitle}
-        description={homePage.portfolioDescription}
-        buttonText={homePage.buttonTextPortfolioMore}
-      />
-      <Post
-        title={homePage.postTitleSection}
-        postData={post}
-        description={homePage.postDescription}
-        recentText={homePage.recentPostSubtitle}
-        buttonText={homePage.buttonTextPostMore}
-      />
+      <div className="flex w-full flex-col overflow-x-hidden">
+        <Hero
+          greetingText={homePage.greetingText}
+          textButton={homePage.heroButtonText}
+          typeWriterTextArray={homePage.typeWriterText}
+        />
+        <About
+          aboutTitle={homePage.aboutTitle}
+          introductionSubtitle={homePage.introductionSubtitle}
+          introductionDescription={homePage.introductionDescription}
+          contactDescription={homePage.contactDescription}
+          contactSubtitle={homePage.contactSubtitle}
+          socialLinks={socialLinks}
+        />
+        <Resume
+          title={homePage.resumeTitleSection}
+          description={homePage.descriptionResume}
+          buttonTextCV={homePage.buttonTextCv}
+          urlCV={homePage.cvUrl}
+          bubbleExperience={bubbleExp}
+        />
+        <Portfolio
+          title={homePage.portfolioTitleSection}
+          portfolioData={portfolio}
+          recentText={homePage.recentPortfolioSubtitle}
+          description={homePage.portfolioDescription}
+          buttonText={homePage.buttonTextPortfolioMore}
+        />
+        <Post
+          title={homePage.postTitleSection}
+          postData={post}
+          description={homePage.postDescription}
+          recentText={homePage.recentPostSubtitle}
+          buttonText={homePage.buttonTextPostMore}
+        />
+      </div>
     </>
   );
 };
@@ -204,7 +206,7 @@ export async function getStaticProps() {
       portfolio: res.data.allPortfolios,
       post: res.data.allPosts,
       homePage: res.data.homePage,
-      bubbleExp: res.data. allBubbleExperiences
+      bubbleExp: res.data.allBubbleExperiences,
     },
   };
 }

@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import type { PortfolioProps } from "@/types/portfolio";
@@ -9,6 +7,7 @@ import type { ReactElement } from "react";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
+import PortfolioCard from "@/components/PortfolioCard";
 
 const PortfolioPreview = ({
   portfolio,
@@ -119,62 +118,7 @@ const PortfolioPreview = ({
         </div>
         <div className="mt-10 flex flex-wrap items-center justify-center ">
           {filteredData.map((project: PortfolioProps) => (
-            <div
-              role="button"
-              key={project.id}
-              className="w-full px-4 duration-300 hover:scale-[1.05] hover:text-primary lg:w-1/2 xl:w-1/3"
-            >
-              <Link
-                href="portfolio/[portfolioId]"
-                as={`portfolio/${project.id.toString()}`}
-              >
-                <div
-                  className="mb-10 h-fit overflow-hidden rounded-2xl bg-back shadow-lg"
-                  data-aos-duration="600"
-                  data-aos="zoom-in-down"
-                >
-                  <Image
-                    src={project.image[0] ? project.image[0].url : ""}
-                    alt={project.image[0] ? project.image[0]?.title : ""}
-                    className="mb-[1.38vh] h-[270px] w-full"
-                    width="1000"
-                    height="500"
-                  />
-                  <div className="px-6 py-8">
-                    <h3 className="mb-3 block truncate text-[2.67vh] font-semibold">
-                      {project.title}
-                    </h3>
-                    <p className="mb-5 line-clamp-3 text-[2.21vh] font-medium text-slate-400">
-                      {isMounted && (
-                        <StructuredText data={project.description} />
-                      )}
-                    </p>
-                    <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
-                      {project.app.length > 4
-                        ? [...project.app]
-                            .slice(0, 3)
-                            .concat(["..."])
-                            .map((list: string, index: number) => (
-                              <div
-                                key={index}
-                                className="mb-3 flex w-fit items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
-                              >
-                                {list}
-                              </div>
-                            ))
-                        : project.app.map((list: string, index: number) => (
-                            <div
-                              key={index}
-                              className="mb-3 flex w-fit items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
-                            >
-                              {list}
-                            </div>
-                          ))}
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
+            <PortfolioCard key={project.id} data={project} />
           ))}
         </div>
       </section>

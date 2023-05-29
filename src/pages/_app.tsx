@@ -31,9 +31,9 @@ const MyApp: any = ({ Component, pageProps }: AppPropsWithLayout) => {
   }
 
   return (
-    <Layout>
+    // <Layout>
       <Component {...pageProps} />
-    </Layout>
+    // </Layout>
   );
 };
 

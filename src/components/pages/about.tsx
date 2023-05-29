@@ -35,7 +35,7 @@ const About: NextPage<AboutProps> = ({
   return (
     <section
       id="about"
-      className="w-full overflow-x-hidden px-20 pb-[13vh] pt-[15vh] md:pt-[27vh] lg:pt-[32vh]"
+      className="w-full overflow-x-hidden px-20 pb-[13vh] pt-[15vh] md:pt-[27vh] lg:pt-[32vh] bg-[#22273B]"
     >
       <div className="flex flex-wrap">
         <div

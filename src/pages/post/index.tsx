@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import { type ReactElement, useEffect, useState } from "react";
 import type { PostProps } from "@/types/post";
 import PageHead from "@/components/PageHead";
@@ -8,6 +6,7 @@ import CrossIcon from "@/components/icons/CrossIcon";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
+import PostCard from "@/components/PostCard";
 
 const PostDetail = ({
   postDetailsDescription,
@@ -115,45 +114,8 @@ const PostDetail = ({
           </h1>
         </div>
         <div className="mx-auto flex w-full flex-wrap justify-center px-2 xl:w-10/12">
-          {filteredData.map((item: PostProps) => (
-            <div
-              key={item.id}
-              className="mb-12 w-full p-6 md:w-1/2 "
-              data-aos-duration="600"
-              data-aos="zoom-in-down"
-            >
-              <div className="rounded-md shadow-md ">
-                <Image
-                  src={item.image.url}
-                  alt={item.title}
-                  width="1000"
-                  height="500"
-                  className="mb-[1.38vh] w-full"
-                />
-              </div>
-              <div className="mt-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
-                {item.tag.map((list: string, index: number) => (
-                  <div
-                    key={index}
-                    className="mt-3 flex w-fit items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
-                  >
-                    {list}
-                  </div>
-                ))}
-              </div>
-              <h2 className="mb-3 mt-5 truncate text-[2.6vh] text-xl font-semibold">
-                {item.title}
-              </h2>
-              <p className="mb-8 line-clamp-3 text-[2.1vh] font-medium text-slate-300">
-                {isMounted && <StructuredText data={item.description} />}
-              </p>
-              <Link
-                href={`post/${item.id.toString()}`}
-                className="hover:scale-200 mt-10  cursor-pointer text-[2.4vh] font-semibold underline duration-300 hover:text-lg hover:text-primary"
-              >
-                {item.textLinkDetails}
-              </Link>
-            </div>
+          {filteredData.map((postData: PostProps) => (
+           <PostCard data={postData} key={postData.id}/>
           ))}
         </div>
       </section>

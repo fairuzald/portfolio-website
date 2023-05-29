@@ -15,7 +15,7 @@ const Hero: NextPage<HeroProps> = ({
   return (
     <section
       id="home"
-      className="flex min-h-screen w-full flex-wrap items-center justify-center overflow-x-hidden xl:px-20 "
+      className="flex min-h-screen w-full flex-wrap items-center justify-center overflow-x-hidden xl:px-20"
       style={{
         background: "linear-gradient(0.17deg, #1e2436 6.22%, #16162d 139.21%)",
       }}
