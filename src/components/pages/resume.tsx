@@ -1,6 +1,5 @@
 import type { BubbleExperienceProps } from "@/types/homePage";
 import type { Document } from "datocms-structured-text-utils";
-import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms/structured-text";
 
@@ -11,13 +10,13 @@ interface ResumeProps {
   buttonTextCV: string;
   bubbleExperience: BubbleExperienceProps[];
 }
-const Resume: NextPage<ResumeProps> = ({
+const Resume = ({
   title,
   description,
   urlCV,
   buttonTextCV,
   bubbleExperience,
-}) => {
+}:ResumeProps) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {

@@ -18,14 +18,14 @@ interface AboutProps {
   socialLinks: SocialLinkProps[];
 }
 
-const About: NextPage<AboutProps> = ({
+const About = ({
   aboutTitle,
   introductionDescription,
   introductionSubtitle,
   contactSubtitle,
   contactDescription,
   socialLinks,
-}) => {
+}:AboutProps) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {

@@ -7,11 +7,11 @@ interface HeroProps {
   greetingText: string;
   textButton: string;
 }
-const Hero: NextPage<HeroProps> = ({
+const Hero = ({
   typeWriterTextArray,
   greetingText,
   textButton,
-}) => {
+}:HeroProps) => {
   return (
     <section
       id="home"

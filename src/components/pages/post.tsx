@@ -14,13 +14,13 @@ interface PostPageProps {
   buttonText: string;
 }
 
-const Post: NextPage<PostPageProps> = ({
+const Post = ({
   title,
   recentText,
   description,
   postData,
   buttonText,
-}) => {
+}:PostPageProps) => {
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
