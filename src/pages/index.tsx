@@ -8,11 +8,11 @@ import EmailIcon from "@/components/icons/EmailIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
 import type { PostProps } from "@/types/post";
-import Hero from "@/components/pages/Hero";
 import About from "@/components/pages/About";
 import Resume from "@/components/pages/Resume";
 import Portfolio from "@/components/pages/Portfolio";
 import Post from "@/components/pages/Post";
+import Hero from "@/components/pages/Hero";
 
 const Home: NextPage<{
   homePage: HomePageProps;
