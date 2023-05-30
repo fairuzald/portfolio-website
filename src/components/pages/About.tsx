@@ -27,7 +27,7 @@ const About = ({
   return (
     <section
       id="about"
-      className="flex w-full flex-col gap-y-14 overflow-x-hidden bg-[#22273B] px-10 py-28 md:px-20 md:py-60 lg:px-36 2xl:px-40"
+      className="flex w-full flex-col gap-y-14 overflow-x-hidden bg-gradient-to-b from-[#1e2436] to-[#1E2436]   px-10 py-28 md:px-20 md:py-60 lg:px-36 2xl:px-40"
     >
       {/* Title */}
       <h2

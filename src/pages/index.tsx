@@ -23,27 +23,27 @@ const Home: NextPage<{
   const socialLinks = [
     {
       href: homePage.githubUrl,
-      icon: <GithubIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"/>,
+      icon: <GithubIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"/>,
       title: homePage.githubTitle,
     },
     {
       href: homePage.linkedinUrl,
-      icon: <LinkedInIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      icon: <LinkedInIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.linkedinTitle,
     },
     {
       href: homePage.emailUrl,
-      icon: <EmailIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      icon: <EmailIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.emailTitle,
     },
     {
       href: homePage.instagramUrl,
-      icon: <InstagramIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      icon: <InstagramIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.instagramTitle,
     },
     {
       href: homePage.whatsappUrl,
-      icon: <WhatsappIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      icon: <WhatsappIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.whatsappTitle,
     },
   ];
@@ -56,7 +56,7 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <div className="flex w-full flex-col overflow-x-hidden">
+      <div className="flex w-full flex-col overflow-x-hidden bg-[#1e2436]">
         <Hero
         profilPicture={homePage.profilPicture}
           greetingText={homePage.greetingText}
