@@ -96,7 +96,7 @@ const Hero = ({
         {/* Button */}
         <div data-aos="fade-up-left" data-aos-duration="200">
           <Link scroll={false} href="#about">
-            <Button>{textButton}</Button>
+            <Button color="solid">{textButton}</Button>
           </Link>
         </div>
       </div>
