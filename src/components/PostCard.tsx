@@ -13,42 +13,50 @@ const PostCard = ({ data }: { data: PostProps }) => {
   }, []);
   return (
     <div
-      className="mb-12 h-[680px] w-full p-6 md:w-1/2"
+      className="flex w-[calc(100%-30px)] flex-col gap-4 lg:gap-6 lg:w-[490px] xl:w-[520px] 2xl:w-[560px]"
       data-aos="flip-left"
       data-aos-duration="800"
       data-aos-delay="200"
     >
-      <div className="rounded-md shadow-md ">
+      {/* Image */}
+      <div className="w-full overflow-hidden rounded-md bg-back shadow-md">
         <Image
           src={data.image.url}
-          alt={data.title}
-          width="1000"
-          height="500"
-          className="mb-[1.38vh] w-full"
+          alt={data.image.title}
+          width={data.image.width}
+          height={data.image.height}
+          className="h-[200px] w-full overflow-hidden object-cover object-center md:h-[270px]"
         />
       </div>
-      <div className="mt-[0.92vh] flex flex-row flex-wrap justify-start gap-x-[4vw] sm:gap-x-[0.78vw]">
-        {data.tag.map((list: string, index: number) => (
-          <div
-            key={index}
-            className="mt-3 flex w-fit items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
-          >
-            {list}
-          </div>
-        ))}
+      {/* Text Detail Post Card */}
+      <div className="flex flex-col gap-3 lg:gap-5">
+        {/* Tag Mapping */}
+        <div className="flex flex-row flex-wrap justify-start gap-4">
+          {data.tag.map((list: string, index: number) => (
+            <p
+              key={index}
+              className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
+            >
+              {list}
+            </p>
+          ))}
+        </div>
+        {/* Title */}
+        <h5 className="line-clamp-1 truncate text-left text-xl font-semibold md:text-[24px] lg:text-[27px]">
+          {data.title}
+        </h5>
+        {/* Description */}
+        <p className="line-clamp-4 break-all text-justify text-base font-medium text-slate-300 lg:line-clamp-3  lg:text-xl">
+          {isMounted && <StructuredText data={data.description} />}
+        </p>
+        {/* Read More */}
+        <Link
+          href={`post/${data.id.toString()}`}
+          className="mt-2 cursor-pointer text-base font-semibold underline duration-300 hover:text-lg hover:text-primary lg:text-2xl lg:hover:text-[27px]"
+        >
+          {data.textLinkDetails}
+        </Link>
       </div>
-      <h5 className="mb-3 mt-5 truncate text-[2.6vh] text-xl font-semibold">
-        {data.title}
-      </h5>
-      <p className="mb-8 line-clamp-3 text-[2.1vh] font-medium text-slate-300">
-        {isMounted && <StructuredText data={data.description} />}
-      </p>
-      <Link
-        href={`post/${data.id.toString()}`}
-        className="mt-10 cursor-pointer text-base font-semibold underline duration-300 hover:text-lg hover:text-primary lg:text-2xl lg:hover:text-[28px]"
-      >
-        {data.textLinkDetails}
-      </Link>
     </div>
   );
 };

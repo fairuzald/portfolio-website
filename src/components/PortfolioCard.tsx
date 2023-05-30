@@ -32,7 +32,7 @@ const PortfolioCard = ({ data }: { data: PortfolioProps }) => {
             />
           )}
           {/* Description Text Section Below Image */}
-          <div className="flex w-full flex-col items-start gap-4 px-8 py-5 pb-7 md:gap-6 md:px-10 md:py-11">
+          <div className="flex w-full flex-col items-start gap-4 px-7 py-5 pb-7 md:gap-6 md:px-10 md:py-11">
             {/* Title */}
             <h5 className="line-clamp-1 text-left text-xl font-semibold md:text-[24px] lg:text-[27px]">
               {data.title}

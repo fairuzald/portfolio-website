@@ -29,7 +29,7 @@ const Resume = ({
   return (
     <section
       id="resume"
-      className="flex w-full flex-col gap-y-14 bg-gradient-to-b from-[#1E2436] to-[#22273B] px-14 py-28 md:px-20 md:py-60 lg:px-36"
+      className="flex w-full flex-col gap-y-14 bg-gradient-to-b from-[#1E2436] to-[#22273B] px-10 py-28 md:px-20 md:py-60 lg:px-36"
     >
       {/* Title */}
       <h2
@@ -67,7 +67,7 @@ const Resume = ({
           })}
         </div>
         {/* Right Section */}
-        <div className="flex w-full flex-col items-center gap-16 px-4 text-center lg:w-7/12 lg:items-end lg:pr-0 lg:text-right xl:pl-10">
+        <div className="flex w-full flex-col items-center gap-16 lg:pl-4 text-center lg:w-7/12 lg:items-end lg:pr-0 lg:text-right xl:pl-10">
           {/* Description */}
           <p
             className="text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[38px]"
