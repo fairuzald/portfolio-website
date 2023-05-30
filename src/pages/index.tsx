@@ -1,49 +1,50 @@
 import { type NextPage } from "next";
 import PageHead from "@/components/PageHead";
-import Hero from "@/components/pages/hero";
-import About from "@/components/pages/about";
-import Resume from "@/components/pages/resume";
-import Portfolio from "@/components/pages/portfolio";
-import { type PortfolioPageProps } from "@/types/portfolio";
-import { type HomePageProps } from "@/types/homePage";
+import { type PortfolioProps } from "@/types/portfolio";
+import type { BubbleExperienceProps, HomePageProps } from "@/types/homePage";
 import GithubIcon from "@/components/icons/GithubIcon";
 import LinkedInIcon from "@/components/icons/LinkedInIcon";
 import EmailIcon from "@/components/icons/EmailIcon";
 import InstagramIcon from "@/components/icons/InstagramIcon";
 import WhatsappIcon from "@/components/icons/WhatsappIcon";
-import Post from "@/components/pages/post";
-import type { PostInterface } from "@/types/post";
+import type { PostProps } from "@/types/post";
+import About from "@/components/pages/About";
+import Resume from "@/components/pages/Resume";
+import Portfolio from "@/components/pages/Portfolio";
+import Post from "@/components/pages/Post";
+import Hero from "@/components/pages/Hero";
 
 const Home: NextPage<{
   homePage: HomePageProps;
-  portfolio: PortfolioPageProps[];
-  post: PostInterface[];
-}> = ({ homePage, portfolio, post }) => {
+  portfolio: PortfolioProps[];
+  post: PostProps[];
+  bubbleExp: BubbleExperienceProps[];
+}> = ({ homePage, portfolio, post, bubbleExp }) => {
   const socialLinks = [
     {
-      href: "https://github.com/fairuzald",
-      icon: <GithubIcon />,
-      title: "Github",
+      href: homePage.githubUrl,
+      icon: <GithubIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"/>,
+      title: homePage.githubTitle,
     },
     {
-      href: "https://www.linkedin.com/in/moh-fairuz-alauddin-yahya-b793b5232/",
-      icon: <LinkedInIcon />,
-      title: "LinkedIn",
+      href: homePage.linkedinUrl,
+      icon: <LinkedInIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      title: homePage.linkedinTitle,
     },
     {
-      href: "mailto:fairuzy210@gmail.com",
-      icon: <EmailIcon />,
-      title: "Email",
+      href: homePage.emailUrl,
+      icon: <EmailIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      title: homePage.emailTitle,
     },
     {
-      href: "https://instagram.com/fairuzal__",
-      icon: <InstagramIcon />,
-      title: "Instagram",
+      href: homePage.instagramUrl,
+      icon: <InstagramIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      title: homePage.instagramTitle,
     },
     {
-      href: "https://wa.me/628993577066",
-      icon: <WhatsappIcon />,
-      title: "WhatsApp",
+      href: homePage.whatsappUrl,
+      icon: <WhatsappIcon style="fill-current w-[25px] h-[25px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
+      title: homePage.whatsappTitle,
     },
   ];
 
@@ -55,37 +56,46 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <Hero />
-      <About
-        aboutTitle={homePage.aboutTitle}
-        introductionSubtitle={homePage.introductionSubtitle}
-        introductionDescription={homePage.introductionDescription}
-        contactDescription={homePage.contactDescription}
-        contactSubtitle={homePage.contactSubtitle}
-        socialLinks={socialLinks}
-      />
-      <Resume
-        title={homePage.resumeTitleSection}
-        description={homePage.descriptionResume}
-        buttonTextCV={homePage.buttonTextCv}
-        urlCV={homePage.cvUrl}
-      />
-      <Portfolio
-        data={portfolio}
-        title={homePage.portfolioTitleSection}
-        description={homePage.portfolioDescription}
-      />
-      <Post
-        postTitle={homePage.postTitleSection}
-        postData={post}
-        postDescription={homePage.postDescription}
-        recentText={homePage.recentPostSubtitle}
-        buttonTextViewMore={homePage.buttonTextPostMore}
-      />
+      <div className="flex w-full flex-col overflow-x-hidden bg-[#1e2436]">
+        <Hero
+        profilPicture={homePage.profilPicture}
+          greetingText={homePage.greetingText}
+          textButton={homePage.heroButtonText}
+          typeWriterTextArray={homePage.typeWriterText}
+        />
+        <About
+          aboutTitle={homePage.aboutTitle}
+          introductionSubtitle={homePage.introductionSubtitle}
+          introductionDescription={homePage.introductionDescription}
+          contactDescription={homePage.contactDescription}
+          contactSubtitle={homePage.contactSubtitle}
+          socialLinks={socialLinks}
+        />
+        <Resume
+          title={homePage.resumeTitleSection}
+          description={homePage.descriptionResume}
+          buttonTextCV={homePage.buttonTextCv}
+          urlCV={homePage.cvUrl}
+          bubbleExperience={bubbleExp}
+        />
+        <Portfolio
+          title={homePage.portfolioTitleSection}
+          portfolioData={portfolio}
+          recentText={homePage.recentPortfolioSubtitle}
+          description={homePage.portfolioDescription}
+          buttonText={homePage.buttonTextPortfolioMore}
+        />
+        <Post
+          title={homePage.postTitleSection}
+          postData={post}
+          description={homePage.postDescription}
+          recentText={homePage.recentPostSubtitle}
+          buttonText={homePage.buttonTextPostMore}
+        />
+      </div>
     </>
   );
 };
-
 export default Home;
 export async function getStaticProps() {
   const res = await (
@@ -99,6 +109,12 @@ export async function getStaticProps() {
       body: JSON.stringify({
         query: `
       {
+        allBubbleExperiences {
+          id
+          experienceTitle
+          durationTitle
+          durationBubble
+        }
         homePage {
           portfolioDescription {
             value
@@ -111,6 +127,16 @@ export async function getStaticProps() {
           recentPortfolioSubtitle
           recentPostSubtitle
           resumeTitleSection
+          githubTitle
+          emailTitle
+          instagramTitle
+          greetingText
+          heroButtonText
+          linkedinTitle
+          typeWriterText
+          whatsappTitle
+          recentPortfolioSubtitle
+          buttonTextPortfolioMore
           whatsappUrl
           linkedinUrl
           instagramUrl
@@ -129,6 +155,13 @@ export async function getStaticProps() {
           buttonTextPortfolioMore
           buttonTextCv
           aboutTitle
+          profilPicture {
+            id
+            height
+            url
+            title
+            width
+          }
           descriptionResume {
             value
           }
@@ -140,6 +173,7 @@ export async function getStaticProps() {
           }
         }
         allPortfolios {
+          id
           image {
             url
             title
@@ -173,12 +207,12 @@ export async function getStaticProps() {
       }),
     })
   ).json();
-
   return {
     props: {
       portfolio: res.data.allPortfolios,
       post: res.data.allPosts,
       homePage: res.data.homePage,
+      bubbleExp: res.data.allBubbleExperiences,
     },
   };
 }

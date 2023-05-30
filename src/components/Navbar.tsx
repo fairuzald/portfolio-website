@@ -35,11 +35,11 @@ export default function Navbar({ data }: { data: DataProps[] }) {
   }, []);
   return (
     <header className="absolute left-0 top-0 z-10 flex w-full items-center bg-transparent">
-      <div className="relative flex items-center justify-between w-full lg:mx-20">
+      <div className="relative flex w-full items-center justify-between lg:mx-20">
         {/* Logo websites */}
         <div className="flex">
           <Link
-            href="#home"
+            href="/"
             scroll={false}
             className="flex px-10 py-[14px] md:py-[17px]"
           >
@@ -70,6 +70,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
               !navbarShow ? "hidden" : "flex"
             } absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg lg:static lg:flex lg:max-w-full lg:rounded-none lg:bg-transparent lg:py-5 lg:shadow-none`}
           >
+            {/* Mapping LIst Data Navbar */}
             <ul className="flex w-full flex-col items-center lg:flex-1 lg:flex-row">
               {data.map((item: DataProps, index: number) => (
                 <li
@@ -78,7 +79,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
                 >
                   <Link
                     href={item.href}
-                    className="mx-8 font-montserrat-sb flex py-2 text-base tracking-widest md:text-xl"
+                    className="mx-8 flex py-2 font-montserrat-sb text-base tracking-widest md:text-xl"
                     scroll={false}
                     onClick={() => {
                       document

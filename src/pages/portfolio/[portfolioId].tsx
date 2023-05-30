@@ -1,11 +1,12 @@
 import React, { type ReactElement } from "react";
 import Image from "next/image";
 import PageHead from "@/components/PageHead";
-import type { PortfolioPageProps } from "@/types/portfolio";
+import type { PortfolioProps } from "@/types/portfolio";
 import { StructuredText } from "react-datocms/structured-text";
+import type { GetStaticPropsContext } from 'next';
 import Navbar from "@/components/Navbar";
 
-const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioPageProps }) => {
+const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
   return (
     <>
       <PageHead
@@ -113,7 +114,7 @@ export async function getStaticPaths() {
     })
   ).json();
 
-  const paths = res.data.allPortfolios.map((list: PortfolioPageProps) => {
+  const paths = res.data.allPortfolios.map((list: PortfolioProps) => {
     return {
       params: {
         portfolioId: `${list.id}`,
@@ -127,7 +128,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps(ctx: any) {
+export async function getStaticProps(ctx: GetStaticPropsContext) {
   const res = await (
     await fetch("https://graphql.datocms.com/", {
       method: "POST",
@@ -158,11 +159,9 @@ export async function getStaticProps(ctx: any) {
       }),
     })
   ).json();
-  const cleanData = res.data.allPortfolios.filter(
-    (item: PortfolioPageProps) => {
-      return item.id.toString() === ctx.params.portfolioId;
-    }
-  );
+  const cleanData = res.data.allPortfolios.filter((item: PortfolioProps) => {
+    return item.id.toString() === ctx.params?.portfolioId;
+  });
   return {
     props: {
       portfolio: cleanData[0],
