@@ -74,12 +74,12 @@ const About = ({
           </h5>
           {/* Mapping Social Media Account */}
           <div
-            className="flex items-center justify-center gap-x-5 lg:gap-x-8 mt-3"
+            className="mt-3 flex items-center justify-center gap-x-5 lg:gap-x-8"
             data-aos="slide-left"
             data-aos-duration="1000"
           >
             {socialLinks.map((item: SocialLinkProps, index: number) => (
-              <div key={index} data-aos="slide-left" data-aos-duration="800" >
+              <div key={index} data-aos="slide-left" data-aos-duration="800">
                 <Link
                   href={item.href}
                   rel="noreferrer"
