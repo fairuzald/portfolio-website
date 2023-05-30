@@ -30,7 +30,7 @@ const Post = ({
   return (
     <section
       id="post"
-      className="flex w-full flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#1C2034] to-[#22273B] px-10 py-28 md:px-20 md:py-60 lg:px-28 2xl:px-36"
+      className="flex w-full flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#1C2034] to-[#22273B] px-10 py-28 md:px-20 md:py-60 md:pt-20 lg:px-28 2xl:px-36"
     >
       {/* Description and Title Post Section */}
       <div className="flex w-full max-w-4xl flex-col items-center justify-center gap-12 text-center">

@@ -28,7 +28,7 @@ export default function Portfolio({
   return (
     <section
       id="portfolio"
-      className="flex w-full flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#22273B] to-[#1C2034] px-10 py-28 md:px-20 md:py-60 lg:px-28 2xl:px-36"
+      className="flex w-full flex-col items-center justify-center gap-10 bg-gradient-to-b from-[#22273B] to-[#1C2034] px-10 py-28 md:px-20 md:py-60 md:pt-20 lg:px-28"
     >
       {/* Description and Title */}
       <div className="flex w-full max-w-4xl flex-col items-center justify-center gap-12 text-center">

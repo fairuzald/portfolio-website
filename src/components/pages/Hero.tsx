@@ -67,7 +67,7 @@ const Hero = ({
         </h3>
         {/* Description Education */}
         <h4
-          className="mb-2 text-[15px] font-medium leading-relaxed text-slate-400 md:text-xl lg:text-[22px]"
+          className="mb-2 text-[15px] font-medium leading-relaxed text-slate-400 md:text-xl lg:text-[21px]"
           data-aos="slide-left"
           data-aos-duration="1000"
         >

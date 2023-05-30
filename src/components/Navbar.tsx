@@ -39,7 +39,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
         {/* Logo websites */}
         <div className="flex">
           <Link
-            href="#home"
+            href="/"
             scroll={false}
             className="flex px-10 py-[14px] md:py-[17px]"
           >
