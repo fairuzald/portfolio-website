@@ -27,7 +27,7 @@ const About = ({
   return (
     <section
       id="about"
-      className="flex w-full flex-col gap-y-14 overflow-x-hidden bg-[#22273B] px-10 py-28 md:px-20 md:py-60 lg:px-28"
+      className="flex w-full flex-col gap-y-14 overflow-x-hidden bg-[#22273B] px-10 py-28 md:px-20 md:py-60 lg:px-36 2xl:px-40"
     >
       {/* Title */}
       <h2
@@ -38,7 +38,7 @@ const About = ({
       </h2>
       <div className="flex w-full flex-wrap gap-y-12">
         {/* Introduction Section */}
-        <div className="flex w-full flex-col gap-10 lg:w-1/2 lg:pr-10">
+        <div className="flex w-full flex-col gap-10 lg:w-1/2 lg:pr-14">
           {/* Introduction Title */}
           <h3
             className="text-center text-2xl font-semibold md:text-3xl lg:text-left lg:text-[45px]"
@@ -56,7 +56,7 @@ const About = ({
           </h5>
         </div>
         {/* Contact Section */}
-        <div className="self-top flex w-full flex-col  gap-10 text-center lg:w-1/2 lg:pl-10">
+        <div className="self-top flex w-full flex-col  gap-10 text-center lg:w-1/2 lg:pl-14">
           {/* Contact Title */}
           <h3
             className="text-center text-2xl font-semibold md:text-3xl lg:text-[45px]"

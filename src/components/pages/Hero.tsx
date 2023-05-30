@@ -19,7 +19,7 @@ const Hero = ({
   return (
     <section
       id="home"
-      className="flex min-h-screen w-full flex-wrap items-center justify-center overflow-hidden px-10 py-12 xl:px-20"
+      className="flex min-h-screen w-full flex-wrap items-center justify-center overflow-hidden px-10 py-12 xl:px-32"
       style={{
         background: "linear-gradient(0.17deg, #1e2436 6.22%, #16162d 139.21%)",
       }}
@@ -42,7 +42,7 @@ const Hero = ({
         )}
       </div>
       {/* TEXT SECTION */}
-      <div className="flex flex-col gap-y-7 self-center px-2 lg:w-1/2 2xl:px-10">
+      <div className="flex flex-col gap-y-7 self-center lg:w-1/2">
         {/* Greeting text  */}
         <h3
           className="flex flex-col gap-y-5 text-xl font-[550] md:text-2xl lg:text-3xl"
