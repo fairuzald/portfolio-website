@@ -12,47 +12,53 @@ const PortfolioCard = ({ data }: { data: PortfolioProps }) => {
     }
   }, []);
   return (
-    <button className="flex w-full flex-col px-4 duration-300 hover:scale-[1.05] hover:text-primary lg:w-1/2 xl:w-1/3">
+    <button className="flex w-full flex-col duration-300 hover:scale-[1.05] hover:text-primary lg:w-[490px] xl:w-[520px] 2xl:w-[560px]">
       <Link href={`portfolio/${data.id}`}>
+        {/* Container */}
         <div
-          className="mb-10 w-full overflow-hidden rounded-2xl bg-back shadow-lg"
+          className="w-full overflow-hidden rounded-2xl bg-back shadow-lg"
           data-aos="flip-right"
           data-aos-duration="800"
           data-aos-delay="200"
         >
+          {/* Image */}
           {data.image && data.image[0] && (
             <Image
               src={data.image[0]?.url}
               alt={data.image[0]?.title}
               width={data.image[0]?.width}
               height={data.image[0]?.height}
-              className="mb-[1.38vh] h-[270px] w-full overflow-hidden bg-cover"
+              className="h-[200px] w-full overflow-hidden object-cover object-center md:h-[270px]"
             />
           )}
-          <div className="flex w-full flex-col items-start px-10 py-8">
-            <h5 className="mb-3 text-[2.67vh] text-left font-semibold line-clamp-1">
+          {/* Description Text Section Below Image */}
+          <div className="flex w-full flex-col items-start gap-4 px-8 py-5 pb-7 md:gap-6 md:px-10 md:py-11">
+            {/* Title */}
+            <h5 className="line-clamp-1 text-left text-xl font-semibold md:text-[24px] lg:text-[27px]">
               {data.title}
             </h5>
-            <p className="mb-5 line-clamp-3 text-justify text-[2.21vh] font-medium text-slate-400">
+            {/* Description */}
+            <p className="line-clamp-4 lg:line-clamp-3 break-all text-justify text-base font-medium text-slate-400  lg:text-xl">
               {isMounted && <StructuredText data={data.description} />}
             </p>
-            <div className="mb-[0.92vh] flex flex-row flex-wrap justify-start  gap-x-[4vw] sm:gap-x-[0.78vw]">
+            {/* Mapping tag */}
+            <div className="flex flex-row flex-wrap justify-start gap-4">
               {data.app.length > 4
                 ? [...data.app]
                     .slice(0, 3)
                     .concat(["..."])
                     .map((list: string, index: number) => (
-                      <div
+                      <p
                         key={index}
-                        className="mb-3 flex  items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
+                        className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
                       >
                         {list}
-                      </div>
+                      </p>
                     ))
                 : data.app.map((list: string, index: number) => (
                     <div
                       key={index}
-                      className="mb-3 flex  items-center rounded-lg bg-primary px-[3vw] py-[0.55vh] text-center text-[1.5vh] font-medium text-white shadow-sm  shadow-primary sm:px-[0.7vw] lg:text-[2vh]"
+                      className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
                     >
                       {list}
                     </div>

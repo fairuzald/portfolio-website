@@ -50,7 +50,7 @@ const Resume = ({
             return (
               <div
                 key={item.id}
-                className="flex flex-col w-[calc(50%-50px)] items-center gap-x-2 gap-y-7 lg:w-full lg:flex-row"
+                className="flex w-[calc(50%-50px)] flex-col items-center gap-x-2 gap-y-7 lg:w-full lg:flex-row"
               >
                 {/* Bubble Frame */}
                 <BubbleFrame>{item.durationBubble}</BubbleFrame>
