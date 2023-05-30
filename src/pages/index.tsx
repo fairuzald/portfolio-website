@@ -23,27 +23,27 @@ const Home: NextPage<{
   const socialLinks = [
     {
       href: homePage.githubUrl,
-      icon: <GithubIcon />,
+      icon: <GithubIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]"/>,
       title: homePage.githubTitle,
     },
     {
       href: homePage.linkedinUrl,
-      icon: <LinkedInIcon />,
+      icon: <LinkedInIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.linkedinTitle,
     },
     {
       href: homePage.emailUrl,
-      icon: <EmailIcon />,
+      icon: <EmailIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.emailTitle,
     },
     {
       href: homePage.instagramUrl,
-      icon: <InstagramIcon />,
+      icon: <InstagramIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.instagramTitle,
     },
     {
       href: homePage.whatsappUrl,
-      icon: <WhatsappIcon />,
+      icon: <WhatsappIcon style="fill-current w-[25px] h-[26px] md:w-[30px] md:h-[30px] lg:w-[35px] lg:h-[35px]" />,
       title: homePage.whatsappTitle,
     },
   ];
@@ -96,7 +96,6 @@ const Home: NextPage<{
     </>
   );
 };
-
 export default Home;
 export async function getStaticProps() {
   const res = await (
