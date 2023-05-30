@@ -1,10 +1,16 @@
 import type { Document } from "datocms-structured-text-utils";
-
-export interface BubbleExperienceProps{
-  id:string;
-  experienceTitle:string;
-  durationTitle:string;
-  durationBubble:string;
+export interface ImageProps {
+  id: number;
+  url: string;
+  title: string;
+  width: number;
+  height: number;
+}
+export interface BubbleExperienceProps {
+  id: string;
+  experienceTitle: string;
+  durationTitle: string;
+  durationBubble: string;
 }
 export interface HomePageProps {
   portfolioDescription: Document;
@@ -37,4 +43,5 @@ export interface HomePageProps {
   linkedinTitle: string;
   typeWriterText: string[];
   whatsappTitle: string;
+  profilPicture: ImageProps[];
 }

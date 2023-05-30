@@ -58,6 +58,7 @@ const Home: NextPage<{
       />
       <div className="flex w-full flex-col overflow-x-hidden">
         <Hero
+        profilPicture={homePage.profilPicture}
           greetingText={homePage.greetingText}
           textButton={homePage.heroButtonText}
           typeWriterTextArray={homePage.typeWriterText}
@@ -155,6 +156,13 @@ export async function getStaticProps() {
           buttonTextPortfolioMore
           buttonTextCv
           aboutTitle
+          profilPicture {
+            id
+            height
+            url
+            title
+            width
+          }
           descriptionResume {
             value
           }
@@ -200,7 +208,6 @@ export async function getStaticProps() {
       }),
     })
   ).json();
-
   return {
     props: {
       portfolio: res.data.allPortfolios,
