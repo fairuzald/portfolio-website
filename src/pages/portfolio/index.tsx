@@ -63,6 +63,7 @@ const PortfolioPreview = ({
         </p>
         {/* Search Bar */}
         <SearchBar
+          type="portfolio"
           defaultData={portfolio}
           filteredData={filteredData}
           setFilteredData={setFilteredData}

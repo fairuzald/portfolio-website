@@ -1,46 +1,28 @@
 import { type ReactElement, useEffect, useState } from "react";
 import type { PostProps } from "@/types/post";
 import PageHead from "@/components/PageHead";
-import SearchIcon from "@/components/icons/SearchIcon";
-import CrossIcon from "@/components/icons/CrossIcon";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
 import PostCard from "@/components/PostCard";
+import SearchBar from "@/components/SearchBar";
 
 const PostDetail = ({
+  title,
+  subtitle,
+  placeholder,
   postDetailsDescription,
   posts,
 }: {
+  title: string;
+  subtitle: string;
+  placeholder: string;
   postDetailsDescription: Document;
   posts: PostProps[];
 }) => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState(posts);
 
-  function handleSearch(search: string) {
-    setSearch(search);
-    const newData = posts.filter((itemData: PostProps) => {
-      if (
-        itemData.title
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase()) ||
-        itemData.tag.some((item: string) =>
-          item.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-        )
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    setFilteredData(newData);
-  }
-
-  function handleCancelSearch() {
-    setSearch("");
-    setFilteredData(posts);
-  }
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -57,65 +39,44 @@ const PostDetail = ({
       />
       <section
         id="home"
-        className="min-h-[100vh] bg-gradient-to-b from-secondary to-[#20233a]  px-20 pb-20 pt-36"
+        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-secondary to-[#20233a] px-10 py-28 md:px-20 md:py-40 lg:px-24"
       >
-        <div className="w-full px-4">
-          <div className="mx-auto mb-16 max-w-xl text-center">
-            <h2
-              className="mb-3 text-[4.6vh] font-semibold text-primary"
-              data-aos-duration="600"
-              data-aos="zoom-in-down"
-            >
-              Post
-            </h2>
-            <p
-              className="font-base text-justify text-[2.3vh] text-white"
-              data-aos-duration="600"
-              data-aos="slide-right"
-            >
-              {isMounted && <StructuredText data={postDetailsDescription} />}
-            </p>
-          </div>
-          <div
-            className="mx-auto mb-12 flex w-[70vw] items-center justify-center gap-[1.5vw] rounded-[7px] bg-white py-[0.17rem] lg:w-[50vw]"
-            data-aos-duration="600"
-            data-aos="slide-left"
-          >
-            <input
-              type="text"
-              placeholder="Search Post"
-              onChange={(e) => {
-                setSearch(e.target.value);
-                handleSearch(e.target.value);
-              }}
-              value={search}
-              className="w-[60vw] bg-transparent text-center font-semibold text-black outline-none lg:w-[40vw]"
-            ></input>
-            <button
-              onClick={() => {
-                search === "" ? handleSearch(search) : handleCancelSearch();
-              }}
-            >
-              {search === "" ? (
-                <SearchIcon style="w-[1rem] h-[1rem]" />
-              ) : (
-                <CrossIcon style="w-[1rem] h-[1rem]" />
-              )}
-            </button>
-          </div>
-          <h1
-            className={`mb-5 text-2xl font-bold ${
-              search !== "" && "text-center text-primary"
-            } `}
-          >
-            {search === ""
-              ? "All Posts"
-              : `${filteredData.length} search result was found`}
-          </h1>
-        </div>
-        <div className="mx-auto flex w-full flex-wrap justify-center px-2 xl:w-10/12">
+        {/* Title */}
+        <h2
+          className="text-center text-3xl font-semibold text-primary md:text-4xl lg:text-5xl"
+          data-aos-duration="600"
+          data-aos="zoom-in-down"
+        >
+          {title}
+        </h2>
+        <p
+          className="mx-auto w-[calc(100%-20px)] text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:text-xl lg:leading-[35px]"
+          data-aos-duration="600"
+          data-aos="slide-right"
+        >
+          {isMounted && <StructuredText data={postDetailsDescription} />}
+        </p>
+        <SearchBar
+          type="post"
+          search={search}
+          setSearch={setSearch}
+          placeholder={placeholder}
+          defaultData={posts}
+          filteredData={filteredData}
+          setFilteredData={setFilteredData}
+        />
+        <h3
+          className={`flex items-start lg:ml-20 text-left text-xl font-bold md:text-2xl lg:text-3xl ${
+            search !== "" && "justify-center text-center text-primary"
+          } `}
+        >
+          {search === ""
+            ? subtitle
+            : `${filteredData.length} search result was found`}
+        </h3>
+        <div className="flex w-full flex-wrap items-stretch justify-center gap-14 lg:gap-20">
           {filteredData.map((postData: PostProps) => (
-           <PostCard data={postData} key={postData.id}/>
+            <PostCard data={postData} key={postData.id} />
           ))}
         </div>
       </section>
@@ -147,6 +108,9 @@ export async function getStaticProps() {
         query: `
           {
             homePage {
+                postTitleSection
+                placeholderPost
+                allPostSubtitle
                 postDetailsDescription {
                   value
                 }
@@ -178,6 +142,9 @@ export async function getStaticProps() {
     props: {
       posts: res.data.allPosts,
       postDetailsDescription: res.data.homePage.postDetailsDescription,
+      title: res.data.homePage.postTitleSection,
+      placeholder: res.data.homePage.placeholderPost,
+      subtitle: res.data.homePage.allPostSubtitle,
     },
   };
 }

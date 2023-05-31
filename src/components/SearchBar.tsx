@@ -4,38 +4,47 @@ import type { Dispatch, SetStateAction } from "react";
 import SearchIcon from "./icons/SearchIcon";
 import CrossIcon from "./icons/CrossIcon";
 
-const SearchBar = ({
+type SearchBarProps<T> = {
+  defaultData: T[];
+  filteredData: T[];
+  setFilteredData: Dispatch<SetStateAction<T[]>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
+  placeholder: string;
+  type: "post" | "portfolio"
+};
+
+const SearchBar = <T extends PostProps | PortfolioProps>({
   defaultData,
   filteredData,
   setFilteredData,
   search,
   setSearch,
   placeholder,
-}: {
-  defaultData: PortfolioProps[];
-  filteredData: PortfolioProps[];
-  setFilteredData: Dispatch<SetStateAction<PortfolioProps[]>>;
-  search: string;
-  setSearch: Dispatch<SetStateAction<string>>;
-  placeholder: string;
-}) => {
-  // Function to handle search mechanism
+  type,
+}: SearchBarProps<T>) => {
+  // Function to handle search mechanism on Porfolio
   function handleSearch(search: string) {
     setSearch(search);
-    const newData = defaultData.filter((itemData: PortfolioProps) => {
+    const newData = defaultData.filter((itemData: T) => {
       if (
         itemData.title
           .toLocaleLowerCase()
           .includes(search.toLocaleLowerCase()) ||
-        itemData.app.some((item: string) =>
-          item.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-        )
+        (type === "post" &&
+          (itemData as PostProps).tag.some((item: string) =>
+            item.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+          )) ||
+        (type === "portfolio" &&
+          (itemData as PortfolioProps).app.some((item: string) =>
+            item.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+          ))
       ) {
         return true;
       } else {
         return false;
       }
-    });
+    }) as T[];
     setFilteredData(newData);
   }
   // Function to cancel search
