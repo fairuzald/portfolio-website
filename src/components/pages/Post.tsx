@@ -69,7 +69,7 @@ const Post = ({
         data-aos="zoom-in"
         data-aos-duration="200"
       >
-        <Link href="/portfolio">
+        <Link href="/post">
           <Button color="gradient">{buttonText}</Button>
         </Link>
       </div>
