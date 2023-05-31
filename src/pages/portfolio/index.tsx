@@ -55,7 +55,7 @@ const PortfolioPreview = ({
         </h2>
         {/* Description */}
         <p
-          className="w-[calc(100%-20px)] mx-auto text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:text-xl lg:leading-[35px]"
+          className="mx-auto w-[calc(100%-20px)] text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:text-xl lg:leading-[35px]"
           data-aos-duration="600"
           data-aos="slide-right"
         >
@@ -73,7 +73,7 @@ const PortfolioPreview = ({
         {/* All Projects Text */}
         <h3
           className={`flex items-start  text-left text-xl font-bold md:text-2xl lg:text-3xl ${
-            search !== "" && "text-center text-primary justify-center"
+            search !== "" && "justify-center text-center text-primary"
           } `}
         >
           {search === ""
