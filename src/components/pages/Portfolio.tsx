@@ -41,7 +41,7 @@ export default function Portfolio({
         </h2>
         {/* Description */}
         <p
-          className="text-justify font-inter-r text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[35px]"
+          className="text-justify font-inter-r text-base leading-7 text-slate-200 md:text-xl lg:text-xl lg:leading-[35px]"
           data-aos="zoom-in"
           data-aos-delay="200"
         >
@@ -56,7 +56,7 @@ export default function Portfolio({
         {recentText}
       </h3>
       {/* Mapping Cards */}
-      <div className="flex flex-wrap items-stretch justify-center gap-12 2xl:gap-14">
+      <div className="flex flex-wrap items-stretch justify-center gap-12">
         {portfolioData.length >= 3 &&
           portfolioData
             .slice(0, 3)

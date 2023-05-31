@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
+import { useEffect, useState } from "react";
 interface SocialLinkProps {
   href: string;
   icon: JSX.Element;
@@ -24,6 +25,10 @@ const About = ({
   contactDescription,
   socialLinks,
 }: AboutProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <section
       id="about"
@@ -41,32 +46,32 @@ const About = ({
         <div className="flex w-full flex-col gap-10 lg:w-1/2 lg:pr-14">
           {/* Introduction Title */}
           <h3
-            className="text-center text-2xl font-semibold md:text-3xl lg:text-left lg:text-[45px]"
+            className="text-center text-2xl font-semibold md:text-3xl lg:text-left lg:text-[38px]"
             data-aos="zoom-out-right"
           >
             {introductionSubtitle}
           </h3>
           {/* Introduction Description */}
-          <h5
-            className="break-all text-justify text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[35px]"
+          <p
+            className="break-all text-justify text-base leading-7 text-slate-200 md:text-xl lg:text-xl lg:leading-[35px]"
             data-aos-duration="600"
             data-aos="zoom-in-right"
           >
-            <StructuredText data={introductionDescription} />
-          </h5>
+            {isMounted && <StructuredText data={introductionDescription} />}
+          </p>
         </div>
         {/* Contact Section */}
         <div className="self-top flex w-full flex-col  gap-10 text-center lg:w-1/2 lg:pl-14">
           {/* Contact Title */}
           <h3
-            className="text-center text-2xl font-semibold md:text-3xl lg:text-[45px]"
+            className="text-center text-2xl font-semibold md:text-3xl lg:text-[38px]"
             data-aos="zoom-out-left"
           >
             {contactSubtitle}
           </h3>
           {/* Contact Description */}
           <h5
-            className="text-center text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[35px]"
+            className="text-center text-base leading-7 text-slate-200 md:text-xl lg:text-xl lg:leading-[35px]"
             data-aos-duration="600"
             data-aos="zoom-in-left"
           >

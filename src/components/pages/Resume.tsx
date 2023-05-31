@@ -70,7 +70,7 @@ const Resume = ({
         <div className="flex w-full flex-col items-center gap-16 lg:pl-4 text-center lg:w-7/12 lg:items-end lg:pr-0 lg:text-right xl:pl-10">
           {/* Description */}
           <p
-            className="text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[38px]"
+            className="text-base leading-7 text-slate-200 md:text-xl lg:text-xl lg:leading-[38px]"
             data-aos-duration="600"
             data-aos="zoom-in-left"
           >
