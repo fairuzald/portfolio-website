@@ -29,6 +29,7 @@ const PageHead = ({
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:width" content="1326" />
       <meta property="og:image:height" content="904" />
+      <meta name="google-site-verification" content="MTkDsVpnuGTmZtmtbgRUlnkjsA33EJO20OzpTz-gzLM" />
       <meta name="twitter: image" content={imageUrl} />
       <link rel="icon" href={faviconDirectory} />
     </Head>
