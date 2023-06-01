@@ -15,12 +15,12 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
   return (
     <>
       <PageHead
-        title={portfolio.title + "| Moh Fairuz Alauddin Yahya"}
+        title={portfolio.title + " | Moh Fairuz Alauddin Yahya"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <section className="flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-secondary px-8  py-28 md:px-20 md:py-40 lg:gap-16 lg:px-28">
+      <section className="flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-secondary px-8 py-28  text-white md:px-20 md:py-40 lg:gap-16 lg:px-28">
         {/* Title */}
         <h2
           className="text-center text-2xl font-bold text-primary md:text-4xl lg:text-left"

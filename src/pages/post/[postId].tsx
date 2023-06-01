@@ -22,7 +22,7 @@ const PostDetails = ({ post }: { post: PostProps }) => {
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <section className="flex min-h-screen w-full flex-col justify-center gap-6 overflow-hidden bg-secondary  px-8 py-28 md:px-20 md:py-40 lg:px-28">
+      <section className="flex min-h-screen w-full flex-col justify-center gap-6 overflow-hidden bg-secondary px-8  py-28 text-white md:px-20 md:py-40 lg:px-28">
         {/* Title */}
         <h2
           className="text-center text-2xl font-bold text-primary md:text-4xl lg:text-left"

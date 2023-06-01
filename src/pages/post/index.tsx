@@ -32,14 +32,14 @@ const PostDetail = ({
   return (
     <>
       <PageHead
-        title={title + "| Moh Fairuz Alauddin Yahya"}
+        title={title + " | Moh Fairuz Alauddin Yahya"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
       <section
         id="home"
-        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-secondary to-[#20233a] px-10 py-28 md:px-20 md:py-40 lg:px-24"
+        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-secondary to-[#20233a] px-10 py-28 text-white md:px-20 md:py-40 lg:px-24"
       >
         {/* Title */}
         <h2
@@ -69,7 +69,7 @@ const PostDetail = ({
         />
         {/* All Posts */}
         <h3
-          className={`flex items-start lg:ml-28 text-left text-xl font-bold md:text-2xl lg:text-3xl ${
+          className={`flex items-start text-left text-xl font-bold md:text-2xl lg:ml-28 lg:text-3xl ${
             search !== "" && "justify-center text-center text-primary"
           } `}
         >
