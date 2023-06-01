@@ -18,8 +18,8 @@ const PostDetails = ({ post }: { post: PostProps }) => {
     <>
       <PageHead
         title={post.title + " | Moh Fairuz Alauddin Yahya"}
-        description="Yuhu"
-        imageUrl="www.datocms"
+        description="My Personal Portfolio Website"
+        imageUrl="https://www.datocms-assets.com/93353/1683982059-logo-fairuz-website.png"
         faviconDirectory="/LogoWebsite.png"
       />
       <section className="flex min-h-screen w-full flex-col justify-center gap-6 overflow-hidden bg-secondary px-8  py-28 text-white md:px-20 md:py-40 lg:px-28">

@@ -33,8 +33,8 @@ const PostDetail = ({
     <>
       <PageHead
         title={title + " | Moh Fairuz Alauddin Yahya"}
-        description="Yuhu"
-        imageUrl="www.datocms"
+        description="My Personal Portfolio Website"
+        imageUrl="https://www.datocms-assets.com/93353/1683982059-logo-fairuz-website.png"
         faviconDirectory="/LogoWebsite.png"
       />
       <section

@@ -46,8 +46,8 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
     <>
       <PageHead
         title={portfolio.title + " | Moh Fairuz Alauddin Yahya"}
-        description="Yuhu"
-        imageUrl="www.datocms"
+        description="My Personal Portfolio Website"
+        imageUrl="https://www.datocms-assets.com/93353/1683982059-logo-fairuz-website.png"
         faviconDirectory="/LogoWebsite.png"
       />
       <section className="flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-secondary px-8 py-28  text-white md:px-20 md:py-40 lg:gap-16 lg:px-28">
@@ -105,7 +105,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
                 );
               })}
               {/* Slider Button */}
-              <div data-aos="zoom-out" className="absolute top-[50%-5px] lg:top-1/2 z-30 flex w-full -translate-y-1/2 transform items-center justify-between px-0">
+              <div data-aos="zoom-out" className="absolute top-1/2 z-30 flex w-full -translate-y-1/2 transform items-center justify-between px-0">
                 <SlidePrevButton />
                 <SlideNextButton />
               </div>
