@@ -61,7 +61,7 @@ const Home: NextPage<{
   return (
     <>
       <PageHead
-        title="Fairuz Website"
+        title="Moh Fairuz Alauddin Yahya"
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
