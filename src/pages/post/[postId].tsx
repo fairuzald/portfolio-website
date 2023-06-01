@@ -3,8 +3,9 @@ import Image from "next/image";
 import type { PostProps } from "@/types/post";
 import PageHead from "@/components/PageHead";
 import { StructuredText } from "react-datocms/structured-text";
-import type { GetStaticPropsContext } from 'next';
+import type { GetStaticPropsContext } from "next";
 import Navbar from "@/components/Navbar";
+import MappingTagFrame from "@/components/MappingTagFrame";
 
 const PostDetails = ({ post }: { post: PostProps }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -16,59 +17,59 @@ const PostDetails = ({ post }: { post: PostProps }) => {
   return (
     <>
       <PageHead
-        title="Fairuz Website"
+        title={post.title + " | Fairuz Website"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <div className="flex min-h-[100vh] flex-col items-center justify-center bg-secondary pb-[8vh] pt-[9vh]">
-        <div className="flex w-[75vw] flex-col xl:flex-row">
-          <div className="flex w-full flex-col items-center justify-center px-6 lg:items-start xl:w-1/2">
-            <p
-              className="mb-[0.925vh] text-[1.6rem] font-bold text-primary md:text-[1.8rem] lg:text-[2.1rem]"
-              data-aos="zoom-in-down"
-              data-aos-duration="600"
-            >
-              {post.title}
-            </p>
-            <div
-              className="mb-[4.17vh] flex flex-row flex-wrap items-center justify-center gap-x-[20px] font-semibold sm:gap-x-[1.5vw] lg:justify-start"
-              data-aos="slide-right"
-              data-aos-duration="1000"
-            >
-              {post.tag.map((list: string, index: number) => (
-                <div
-                  key={index}
-                  className="flex w-fit items-center rounded-lg bg-primary px-[3.3vw] py-[0.7vh] text-center text-[0.8rem] font-semibold text-white shadow-sm shadow-primary sm:px-[0.9vw] lg:text-[0.85rem]"
-                >
-                  {list}
-                </div>
-              ))}
-            </div>
+      <section className="flex min-h-screen w-full flex-col justify-center gap-6 overflow-hidden bg-secondary  px-8 py-28 md:px-20 md:py-40 lg:px-28">
+        {/* Title */}
+        <h2
+          className="text-center text-2xl font-bold text-primary md:text-4xl lg:text-left"
+          data-aos="zoom-in-down"
+          data-aos-duration="600"
+        >
+          {post.title}
+        </h2>
+        {/* Mapping Tag */}
+        <div
+          className="flex flex-row flex-wrap items-center justify-center gap-x-5 font-semibold sm:gap-x-6 lg:justify-start"
+          data-aos="slide-right"
+          data-aos-duration="1000"
+        >
+          {post.tag.map((list: string, index: number) => (
+            <MappingTagFrame key={index}>{list}</MappingTagFrame>
+          ))}
+        </div>
+        {/* SETUP CONTENT */}
+        <div className="flex w-full flex-col gap-5 lg:flex-row">
+          <div className="flex w-full flex-col items-center justify-center gap-5 px-6 lg:w-1/2 lg:items-start">
+            {/* Image */}
             <Image
               alt={post.title}
               src={post.image.url}
-              width="1000"
-              height="500"
+              width={post.image.width}
+              height={post.image.height}
               data-aos="slide-right"
               data-aos-duration="1000"
-              className="mx-auto mb-[2.78vh] max-h-[50vh] w-[auto] rounded-[2.78vh]"
+              className="mx-auto h-fit w-full rounded-2xl object-cover object-center lg:w-[calc(100%-20px)]"
             />
           </div>
+          {/* Description */}
           <div
-            className="mb-2 flex w-full cursor-pointer flex-col items-center justify-center px-6 text-justify font-[] text-[2vh] leading-[1.8] sm:text-[2.5vh] xl:w-1/2"
+            className="flex w-full cursor-pointer flex-col gap-4 px-4 lg:w-1/2 lg:gap-5 lg:px-6"
             data-aos="slide-left"
             data-aos-duration="1000"
           >
-            <p className="mb-[1.3vh] flex w-full flex-wrap items-center justify-center text-[1.4rem] font-bold md:text-[1.6rem] lg:text-[1.9rem] xl:justify-start">
+            <h3 className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
               Description
-            </p>
-            <p className="text-justify text-[1rem] leading-[1.8] lg:text-[1.1rem]">
+            </h3>
+            <p className="text-justify font-inter-r text-base leading-7 text-slate-200 lg:text-xl lg:leading-[35px]">
               {isMounted && <StructuredText data={post.description} />}
             </p>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

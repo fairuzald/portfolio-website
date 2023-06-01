@@ -43,7 +43,7 @@ const Post = ({
         </h2>
         {/* Description Post */}
         <p
-          className="text-justify font-inter-r text-base leading-7 text-slate-200 md:text-xl lg:text-[23px] lg:leading-[35px]"
+          className="text-justify font-inter-r text-base leading-7 text-slate-200 md:text-xl lg:text-xl lg:leading-[35px]"
           data-aos="zoom-in"
           data-aos-delay="200"
         >
@@ -69,7 +69,7 @@ const Post = ({
         data-aos="zoom-in"
         data-aos-duration="200"
       >
-        <Link href="/portfolio">
+        <Link href="/post">
           <Button color="gradient">{buttonText}</Button>
         </Link>
       </div>

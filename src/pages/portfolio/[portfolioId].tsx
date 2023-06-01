@@ -1,12 +1,17 @@
-import React, { type ReactElement } from "react";
+import React, { type ReactElement, useEffect, useState } from "react";
 import Image from "next/image";
 import PageHead from "@/components/PageHead";
 import type { PortfolioProps } from "@/types/portfolio";
 import { StructuredText } from "react-datocms/structured-text";
-import type { GetStaticPropsContext } from 'next';
+import type { GetStaticPropsContext } from "next";
 import Navbar from "@/components/Navbar";
+import MappingTagFrame from "@/components/MappingTagFrame";
 
 const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   return (
     <>
       <PageHead
@@ -15,52 +20,58 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <div className="flex min-h-[100vh] w-full flex-col items-center overflow-x-hidden bg-gradient-to-b from-[#1C2036] to-[#22273B] pb-[8vh] pt-[11vh] lg:pt-[20vh]">
-        <p
-          className="mb-[0.925vh] w-full flex-wrap px-10 text-center text-[1.6rem] font-bold text-primary md:text-[1.8rem] lg:text-[2.1rem]"
+      <section className="flex min-h-screen w-full flex-col items-center justify-center gap-10 overflow-hidden bg-secondary px-8  py-28 md:px-20 md:py-40 lg:gap-16 lg:px-28">
+        {/* Title */}
+        <h2
+          className="text-center text-2xl font-bold text-primary md:text-4xl lg:text-left"
           data-aos="zoom-in-down"
           data-aos-duration="600"
         >
           {portfolio.title}
-        </p>
-        <div className="m-auto flex w-full flex-wrap justify-center">
+        </h2>
+        <div className="flex w-full flex-col gap-7 lg:flex-row">
+          {/* Image */}
           <div
-            className="flex w-full flex-col items-center justify-center px-10 py-10 xl:w-6/12 "
+            className="flex w-full flex-col items-center justify-center px-4 xl:w-6/12 "
             data-aos="slide-right"
             data-aos-duration="1000"
           >
             <Image
-              src={portfolio.image[0]?.url || ""}
               alt={portfolio.image[0]?.title || ""}
-              width={1000}
-              height={500}
+              src={portfolio.image[0]?.url || ""}
+              width={portfolio.image[0]?.width || 0}
+              height={portfolio.image[0]?.height || 0}
+              data-aos="slide-right"
+              data-aos-duration="1000"
+              className="mx-auto h-fit w-full rounded-2xl object-cover object-center lg:w-[calc(100%-20px)]"
             />
           </div>
+          {/* TEXT CONTENT */}
           <div
-            className="flex w-full flex-col px-6 py-10 xl:w-5/12"
+            className="flex w-full flex-col gap-4 px-4 lg:w-1/2 lg:gap-5 lg:px-6"
             data-aos="slide-left"
             data-aos-duration="1000"
           >
-            <p className="mb-[1.3vh] flex w-full flex-wrap items-center justify-center text-[1.4rem] font-bold md:text-[1.6rem] lg:text-[1.9rem] xl:justify-start">
+            {/* Description subtitle */}
+            <h3 className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
               Description
-            </p>
-            <div className="text-justify text-[1rem] leading-[1.8] lg:text-[1.1rem]">
-              <StructuredText data={portfolio.description} />
-            </div>
-            <div className="mt-[4.17vh] flex flex-row  flex-wrap justify-center gap-x-[20px] font-semibold sm:gap-x-[1.5vw] xl:mt-[11vh] xl:justify-start">
-              {portfolio &&
-                portfolio.app.map((item: string, index: number) => (
-                  <div
-                    key={index}
-                    className="mb-4 flex w-fit items-center rounded-lg bg-primary px-[3.3vw] py-[0.7vh] text-center text-[0.8rem] font-semibold text-white shadow-sm shadow-primary sm:px-[0.9vw] lg:text-[0.85rem]"
-                  >
-                    {item}
-                  </div>
-                ))}
+            </h3>
+            <div className="flex flex-1 flex-col justify-between gap-5">
+              {/* Description */}
+              <p className="text-justify font-inter-r text-base leading-7 text-slate-200 lg:text-xl lg:leading-[35px]">
+                {isMounted && <StructuredText data={portfolio.description} />}
+              </p>
+              {/* Mapping Tag */}
+              <div className="flex flex-row flex-wrap items-center justify-center gap-5 font-semibold sm:gap-6 lg:justify-start">
+                {portfolio &&
+                  portfolio.app.map((item: string, index: number) => (
+                    <MappingTagFrame key={index}>{item}</MappingTagFrame>
+                  ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

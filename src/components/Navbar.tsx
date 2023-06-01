@@ -75,7 +75,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
               {data.map((item: DataProps, index: number) => (
                 <li
                   key={index}
-                  className="list-navbar cursor-pointer transition duration-300 hover:text-primary hover:opacity-90"
+                  className="list-navbar text-center cursor-pointer transition duration-300 hover:text-primary hover:opacity-90"
                 >
                   <Link
                     href={item.href}

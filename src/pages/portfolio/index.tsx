@@ -1,47 +1,32 @@
 import { useEffect, useState } from "react";
 import PageHead from "@/components/PageHead";
 import type { PortfolioProps } from "@/types/portfolio";
-import SearchIcon from "@/components/icons/SearchIcon";
-import CrossIcon from "@/components/icons/CrossIcon";
 import type { ReactElement } from "react";
 import LayoutPagePreview from "@/components/LayoutPagePreview";
 import { StructuredText } from "react-datocms/structured-text";
 import type { Document } from "datocms-structured-text-utils";
 import PortfolioCard from "@/components/PortfolioCard";
+import SearchBar from "@/components/SearchBar";
 
 const PortfolioPreview = ({
   portfolio,
   portfolioDetailsDescription,
+  title,
+  placeholder,
+  subtitle,
 }: {
   portfolio: PortfolioProps[];
   portfolioDetailsDescription: Document;
+  title: string;
+  placeholder: string;
+  subtitle: string;
 }) => {
+  // State to update search field input string
   const [search, setSearch] = useState("");
+  // State to update the data will be displayed on list
   const [filteredData, setFilteredData] = useState(portfolio);
 
-  function handleSearch(search: string) {
-    setSearch(search);
-    const newData = portfolio.filter((itemData: PortfolioProps) => {
-      if (
-        itemData.title
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase()) ||
-        itemData.app.some((item: string) =>
-          item.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-        )
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    setFilteredData(newData);
-  }
-
-  function handleCancelSearch() {
-    setSearch("");
-    setFilteredData(portfolio);
-  }
+  // Function to handle mismatch ui rendering
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -51,72 +36,53 @@ const PortfolioPreview = ({
   return (
     <>
       <PageHead
-        title="Fairuz Website"
+        title={title + " | Fairuz Website"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
       <section
         id="home"
-        className="min-h-screen w-full overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034]  px-20 py-[11vh] lg:py-[18vh]"
+        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034] px-10 py-28 md:px-20 md:py-40 lg:px-24"
       >
-        <div className="w-full px-4">
-          <div className="mx-auto mb-10 max-w-xl text-center">
-            <h2
-              className="mb-3  text-[4.6vh] font-semibold text-primary"
-              data-aos-duration="600"
-              data-aos="zoom-in-down"
-            >
-              Portfolio
-            </h2>
-            <p
-              className="font-base text-justify text-[2.3vh] text-white"
-              data-aos-duration="600"
-              data-aos="slide-right"
-            >
-              {isMounted && (
-                <StructuredText data={portfolioDetailsDescription} />
-              )}
-            </p>
-          </div>
-          <div
-            className="mx-auto mb-12 flex w-[70vw] items-center justify-center gap-[1.5vw] rounded-[7px] bg-white py-[0.17rem] lg:w-[50vw]"
-            data-aos-duration="600"
-            data-aos="slide-left"
-          >
-            <input
-              type="text"
-              placeholder="Search Portfolio"
-              onChange={(e) => {
-                setSearch(e.target.value);
-                handleSearch(e.target.value);
-              }}
-              value={search}
-              className="w-[60vw] bg-transparent text-center font-semibold text-black outline-none lg:w-[40vw]"
-            ></input>
-            <button
-              onClick={() => {
-                search === "" ? handleSearch(search) : handleCancelSearch();
-              }}
-            >
-              {search === "" ? (
-                <SearchIcon style={"w-[1rem] h-[1rem]"} />
-              ) : (
-                <CrossIcon style={"w-[1rem] h-[1rem]"} />
-              )}
-            </button>
-          </div>
-          <h1
-            className={`mb-5 text-2xl font-bold ${
-              search !== "" && "text-center text-primary"
-            } `}
-          >
-            {search === ""
-              ? "All Project"
-              : `${filteredData.length} search result was found`}
-          </h1>
-        </div>
-        <div className="mt-10 flex flex-wrap items-center justify-center ">
+        {/* Title */}
+        <h2
+          className="text-center text-3xl font-semibold text-primary md:text-4xl lg:text-5xl"
+          data-aos-duration="600"
+          data-aos="zoom-in-down"
+        >
+          {title}
+        </h2>
+        {/* Description */}
+        <p
+          className="mx-auto w-[calc(100%-20px)] text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:text-xl lg:leading-[35px]"
+          data-aos-duration="600"
+          data-aos="slide-right"
+        >
+          {isMounted && <StructuredText data={portfolioDetailsDescription} />}
+        </p>
+        {/* Search Bar */}
+        <SearchBar
+          type="portfolio"
+          defaultData={portfolio}
+          filteredData={filteredData}
+          setFilteredData={setFilteredData}
+          search={search}
+          setSearch={setSearch}
+          placeholder={placeholder}
+        />
+        {/* All Projects Text */}
+        <h3
+          className={`flex items-start  text-left text-xl font-bold md:text-2xl lg:text-3xl ${
+            search !== "" && "justify-center text-center text-primary"
+          } `}
+        >
+          {search === ""
+            ? subtitle
+            : `${filteredData.length} search result was found`}
+        </h3>
+        {/* Mapping card portfolio */}
+        <div className="flex w-full flex-wrap items-stretch justify-center gap-12">
           {filteredData.map((project: PortfolioProps) => (
             <PortfolioCard key={project.id} data={project} />
           ))}
@@ -151,6 +117,9 @@ export async function getStaticProps() {
         query: `
         {
           homePage {
+            portfolioTitleSection
+            placeholderPortfolio
+            allPortfolioSubtitle
             portfolioDetailsDescription {
               value
             }
@@ -180,6 +149,9 @@ export async function getStaticProps() {
       portfolio: res.data.allPortfolios,
       portfolioDetailsDescription:
         res.data.homePage.portfolioDetailsDescription,
+      title: res.data.homePage.portfolioTitleSection,
+      placeholder: res.data.homePage.placeholderPortfolio,
+      subtitle: res.data.homePage.allPortfolioSubtitle,
     },
   };
 }

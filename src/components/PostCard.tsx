@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms/structured-text";
+import MappingTagFrame from "./MappingTagFrame";
 
 const PostCard = ({ data }: { data: PostProps }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -13,7 +14,7 @@ const PostCard = ({ data }: { data: PostProps }) => {
   }, []);
   return (
     <div
-      className="flex w-[calc(100%-30px)] flex-col gap-4 lg:gap-6 lg:w-[490px] xl:w-[520px] 2xl:w-[560px]"
+      className="flex w-[calc(100%-30px)] flex-col gap-4 lg:w-[490px] lg:gap-6 xl:w-[520px] 2xl:w-[560px]"
       data-aos="flip-left"
       data-aos-duration="800"
       data-aos-delay="200"
@@ -33,12 +34,7 @@ const PostCard = ({ data }: { data: PostProps }) => {
         {/* Tag Mapping */}
         <div className="flex flex-row flex-wrap justify-start gap-4">
           {data.tag.map((list: string, index: number) => (
-            <p
-              key={index}
-              className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
-            >
-              {list}
-            </p>
+            <MappingTagFrame key={index}>{list}</MappingTagFrame>
           ))}
         </div>
         {/* Title */}

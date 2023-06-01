@@ -67,7 +67,7 @@ const Hero = ({
         </h3>
         {/* Description Education */}
         <h4
-          className="mb-2 text-[15px] font-medium leading-relaxed text-slate-400 md:text-xl lg:text-[21px]"
+          className="mb-2 text-[15px] font-medium leading-relaxed text-slate-400 md:text-xl lg:text-xl"
           data-aos="slide-left"
           data-aos-duration="1000"
         >
@@ -82,7 +82,7 @@ const Hero = ({
         </h4>
         {/* Description interest */}
         <h5
-          className="mb-3 text-sm font-medium leading-relaxed text-slate-500 md:text-lg lg:text-xl"
+          className="mb-3 text-sm font-medium leading-relaxed text-slate-500 md:text-lg lg:text-lg"
           data-aos="slide-left"
           data-aos-duration="1200"
         >
