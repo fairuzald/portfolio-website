@@ -57,7 +57,7 @@ const PostDetails = ({ post }: { post: PostProps }) => {
           </div>
           {/* Description */}
           <div
-            className="flex w-full gap-4 lg:gap-5 cursor-pointer flex-col px-4 lg:w-1/2 lg:px-6"
+            className="flex w-full cursor-pointer flex-col gap-4 px-4 lg:w-1/2 lg:gap-5 lg:px-6"
             data-aos="slide-left"
             data-aos-duration="1000"
           >

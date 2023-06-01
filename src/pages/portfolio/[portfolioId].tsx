@@ -53,10 +53,10 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
             data-aos-duration="1000"
           >
             {/* Description subtitle */}
-              <h3 className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
-                Description
-              </h3>
-            <div className="flex gap-5 flex-1 flex-col justify-between">
+            <h3 className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
+              Description
+            </h3>
+            <div className="flex flex-1 flex-col justify-between gap-5">
               {/* Description */}
               <p className="text-justify font-inter-r text-base leading-7 text-slate-200 lg:text-xl lg:leading-[35px]">
                 {isMounted && <StructuredText data={portfolio.description} />}
