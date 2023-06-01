@@ -32,7 +32,7 @@ const PostDetail = ({
   return (
     <>
       <PageHead
-        title={title + "| Fairuz Website"}
+        title={title + "| Moh Fairuz Alauddin Yahya"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
