@@ -21,7 +21,7 @@ const PortfolioCard = ({ data }: { data: PortfolioProps }) => {
           newOffset = 0;
         }
         setItemOffset(newOffset);
-      }, 3000);
+      }, 5000);
 
       return () => {
         clearTimeout(timerId);

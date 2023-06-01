@@ -37,7 +37,7 @@ export default {
         },
       },
       animation:{
-        "fade-in-out": "fade-in-out 1s ease-in-out",
+        "fade-in-out": "fade-in-out 600ms ease-in-out",
         "slide-left": "slide-left 1s ease-in-out"
       }
     },
