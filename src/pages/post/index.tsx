@@ -49,13 +49,15 @@ const PostDetail = ({
         >
           {title}
         </h2>
+        {/* Description */}
         <p
-          className="mx-auto w-[calc(100%-20px)] text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:text-xl lg:leading-[35px]"
+          className="mx-auto w-[calc(100%-20px)] text-justify font-inter-r text-base leading-7 text-slate-200 md:w-[500px] md:text-xl lg:w-[42rem] lg:leading-[35px]"
           data-aos-duration="600"
           data-aos="slide-right"
         >
           {isMounted && <StructuredText data={postDetailsDescription} />}
         </p>
+        {/* Searchbar */}
         <SearchBar
           type="post"
           search={search}
@@ -65,8 +67,9 @@ const PostDetail = ({
           filteredData={filteredData}
           setFilteredData={setFilteredData}
         />
+        {/* All Posts */}
         <h3
-          className={`flex items-start lg:ml-20 text-left text-xl font-bold md:text-2xl lg:text-3xl ${
+          className={`flex items-start lg:ml-28 text-left text-xl font-bold md:text-2xl lg:text-3xl ${
             search !== "" && "justify-center text-center text-primary"
           } `}
         >
@@ -74,6 +77,7 @@ const PostDetail = ({
             ? subtitle
             : `${filteredData.length} search result was found`}
         </h3>
+        {/* Mapping cards */}
         <div className="flex w-full flex-wrap items-stretch justify-center gap-14 lg:gap-20">
           {filteredData.map((postData: PostProps) => (
             <PostCard data={postData} key={postData.id} />

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { StructuredText } from "react-datocms/structured-text";
+import MappingTagFrame from "./MappingTagFrame";
 
 const PortfolioCard = ({ data }: { data: PortfolioProps }) => {
   const [isMounted, setIsMounted] = useState(false);
@@ -48,20 +49,10 @@ const PortfolioCard = ({ data }: { data: PortfolioProps }) => {
                     .slice(0, 3)
                     .concat(["..."])
                     .map((list: string, index: number) => (
-                      <p
-                        key={index}
-                        className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
-                      >
-                        {list}
-                      </p>
+                      <MappingTagFrame key={index}>{list}</MappingTagFrame>
                     ))
                 : data.app.map((list: string, index: number) => (
-                    <div
-                      key={index}
-                      className="flex items-center rounded-lg bg-primary px-3.5 py-1.5 text-center text-sm font-medium text-white shadow-sm  shadow-primary lg:text-lg"
-                    >
-                      {list}
-                    </div>
+                  <MappingTagFrame key={index}>{list}</MappingTagFrame>
                   ))}
             </div>
           </div>
