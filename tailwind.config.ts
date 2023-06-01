@@ -32,7 +32,7 @@ export default {
         },
         "slide-left": {
           "0%": { transform: "translateX(100%)", opacity: "0" },
-          "50%": { transform: "translateX(0)", opacity: "0.8" },
+          "50%": { transform: "translateX(0)", opacity: "0.5" },
           "100%": { transform: "translateX(0px)", opacity: "1" },
         },
       },

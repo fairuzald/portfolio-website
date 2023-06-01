@@ -62,7 +62,7 @@ const Home: NextPage<{
     <>
       <PageHead
         title="Moh Fairuz Alauddin Yahya"
-        description="Yuhu"
+        description="My Personal Portfolio Website"
         imageUrl="https://www.datocms-assets.com/93353/1683982059-logo-fairuz-website.png"
         faviconDirectory="/LogoWebsite.png"
       />

@@ -67,8 +67,8 @@ export default function Navbar({ data }: { data: DataProps[] }) {
           <nav
             id="nav-menu"
             className={`${
-              !navbarShow ? "hidden" : "flex"
-            } absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg lg:static lg:flex lg:max-w-full lg:rounded-none lg:bg-transparent lg:py-5 lg:shadow-none`}
+              !navbarShow ? "opacity-0 pointer-events-none" : "flex opacity-100"
+            } transition-opacity duration-300 ease-in-out absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg lg:static lg:flex lg:max-w-full lg:rounded-none lg:bg-transparent lg:py-5 lg:shadow-none`}
           >
             {/* Mapping LIst Data Navbar */}
             <ul className="flex w-full flex-col items-center lg:flex-1 lg:flex-row">
