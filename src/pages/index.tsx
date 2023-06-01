@@ -66,7 +66,7 @@ const Home: NextPage<{
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
       />
-      <div className="flex w-full flex-col overflow-x-hidden bg-[#1e2436]">
+      <div className="flex w-full flex-col overflow-x-hidden bg-[#1e2436] text-white">
         <Hero
           profilPicture={homePage.profilPicture}
           greetingText={homePage.greetingText}

@@ -4,7 +4,7 @@ import type { ReactElement } from "react";
 const PageNotFound = () => {
   return (
     <>
-      <div className="m-auto bg-[#22273B] flex h-[100vh] w-full flex-col items-center justify-center gap-4 overflow-hidden">
+      <div className="m-auto flex h-[100vh] w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[#22273B] text-white">
         <p className="text-2xl font-bold text-primary lg:text-4xl">
           Page Not Found
         </p>

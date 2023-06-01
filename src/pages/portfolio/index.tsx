@@ -43,7 +43,7 @@ const PortfolioPreview = ({
       />
       <section
         id="home"
-        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034] px-10 py-28 md:px-20 md:py-40 lg:px-24"
+        className="flex min-h-screen w-full flex-col justify-center gap-12 overflow-x-hidden bg-gradient-to-b from-[#22273B] to-[#1C2034] px-10 py-28 text-white md:px-20 md:py-40 lg:px-24"
       >
         {/* Title */}
         <h2
