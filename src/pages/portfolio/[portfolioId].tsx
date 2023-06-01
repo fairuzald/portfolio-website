@@ -15,7 +15,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
   return (
     <>
       <PageHead
-        title={portfolio.title + "| Fairuz Website"}
+        title={portfolio.title + "| Moh Fairuz Alauddin Yahya"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"

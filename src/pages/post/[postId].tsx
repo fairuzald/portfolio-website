@@ -17,7 +17,7 @@ const PostDetails = ({ post }: { post: PostProps }) => {
   return (
     <>
       <PageHead
-        title={post.title + " | Fairuz Website"}
+        title={post.title + " | Moh Fairuz Alauddin Yahya"}
         description="Yuhu"
         imageUrl="www.datocms"
         faviconDirectory="/LogoWebsite.png"
