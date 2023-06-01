@@ -5,7 +5,6 @@ import { StructuredText } from "react-datocms/structured-text";
 import { useEffect, useState } from "react";
 import PortfolioCards from "../PortfolioCard";
 import Button from "../Button";
-
 export default function Portfolio({
   portfolioData,
   title,

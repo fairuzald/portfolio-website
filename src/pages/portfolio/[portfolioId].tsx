@@ -6,8 +6,38 @@ import { StructuredText } from "react-datocms/structured-text";
 import type { GetStaticPropsContext } from "next";
 import Navbar from "@/components/Navbar";
 import MappingTagFrame from "@/components/MappingTagFrame";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useSwiper } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+
+// import required modules
+import { Autoplay, EffectCoverflow, Pagination } from "swiper";
+import ArrowCircle from "@/components/icons/ArrowCircle";
 
 const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
+  function SlideNextButton() {
+    const swiper = useSwiper();
+
+    return (
+      <button onClick={() => swiper.slideNext()}>
+        <ArrowCircle style="fill-primary w-8 h-8 lg:w-10 lg:h-10" />
+      </button>
+    );
+  }
+  function SlidePrevButton() {
+    const swiper = useSwiper();
+
+    return (
+      <button onClick={() => swiper.slidePrev()}>
+        <ArrowCircle style="fill-primary w-8 h-8 lg:w-10 lg:h-10 rotate-180" />
+      </button>
+    );
+  }
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
     setIsMounted(true);
@@ -30,21 +60,56 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
           {portfolio.title}
         </h2>
         <div className="flex w-full flex-col gap-7 lg:flex-row">
-          {/* Image */}
+          {/* Carousel */}
           <div
-            className="flex w-full flex-col items-center justify-center px-4 xl:w-6/12 "
+            className="relative flex w-full flex-col items-center justify-center px-4 xl:w-1/2 "
             data-aos="slide-right"
             data-aos-duration="1000"
           >
-            <Image
-              alt={portfolio.image[0]?.title || ""}
-              src={portfolio.image[0]?.url || ""}
-              width={portfolio.image[0]?.width || 0}
-              height={portfolio.image[0]?.height || 0}
-              data-aos="slide-right"
-              data-aos-duration="1000"
-              className="mx-auto h-fit w-full rounded-2xl object-cover object-center lg:w-[calc(100%-20px)]"
-            />
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={true}
+              slidesPerView={"auto"}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              loop
+              coverflowEffect={{
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              modules={[Autoplay, EffectCoverflow, Pagination]}
+              className="mySwiper"
+            >
+              {portfolio.image.map((item) => {
+                return (
+                  <SwiperSlide key={item.id}>
+                    <Image
+                      alt={item.title}
+                      src={item.url}
+                      width={item.width}
+                      height={item.height}
+                      data-aos="slide-right"
+                      data-aos-duration="1000"
+                      className="mx-auto h-fit w-full rounded-2xl object-cover object-center lg:h-[420px] lg:w-[calc(100%-20px)]"
+                    />
+                  </SwiperSlide>
+                );
+              })}
+              {/* Slider Button */}
+              <div data-aos="zoom-out" className="absolute top-[50%-5px] lg:top-1/2 z-30 flex w-full -translate-y-1/2 transform items-center justify-between px-0">
+                <SlidePrevButton />
+                <SlideNextButton />
+              </div>
+            </Swiper>
           </div>
           {/* TEXT CONTENT */}
           <div
