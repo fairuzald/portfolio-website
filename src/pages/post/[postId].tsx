@@ -61,9 +61,9 @@ const PostDetails = ({ post }: { post: PostProps }) => {
             data-aos="slide-left"
             data-aos-duration="1000"
           >
-            <p className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
+            <h3 className="flex w-full flex-wrap items-center justify-center text-xl font-bold md:text-2xl lg:justify-start lg:text-3xl">
               Description
-            </p>
+            </h3>
             <p className="text-justify font-inter-r text-base leading-7 text-slate-200 lg:text-xl lg:leading-[35px]">
               {isMounted && <StructuredText data={post.description} />}
             </p>
