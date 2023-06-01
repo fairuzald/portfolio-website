@@ -24,6 +24,22 @@ export default {
         width: "width",
         height: "height",
       },
+      keyframes:{
+        "fade-in-out": {
+          "0%": { opacity: "0" },
+          "50%": { opacity: "0.5" },
+          "100%": { opacity: "1" },
+        },
+        "slide-left": {
+          "0%": { transform: "translateX(100%)", opacity: "0" },
+          "50%": { transform: "translateX(0)", opacity: "0.8" },
+          "100%": { transform: "translateX(0px)", opacity: "1" },
+        },
+      },
+      animation:{
+        "fade-in-out": "fade-in-out 1s ease-in-out",
+        "slide-left": "slide-left 1s ease-in-out"
+      }
     },
   },
   plugins: [],

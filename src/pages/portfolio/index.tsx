@@ -126,6 +126,7 @@ export async function getStaticProps() {
           }
           allPortfolios {
             image {
+              id
               url
               title
               width
