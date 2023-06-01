@@ -63,7 +63,7 @@ const Home: NextPage<{
       <PageHead
         title="Moh Fairuz Alauddin Yahya"
         description="Yuhu"
-        imageUrl="www.datocms"
+        imageUrl="https://www.datocms-assets.com/93353/1683982059-logo-fairuz-website.png"
         faviconDirectory="/LogoWebsite.png"
       />
       <div className="flex w-full flex-col overflow-x-hidden bg-[#1e2436] text-white">
