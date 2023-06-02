@@ -58,7 +58,6 @@ jobs:
         uses: wearerequired/lint-action@v2
         with:
           auto_fix: true
-          repo-token : ${{ secrets.PR_ACTION }}
           eslint: true
           eslint_args: "--no-error-on-unmatched-pattern"
           eslint_auto_fix: true
