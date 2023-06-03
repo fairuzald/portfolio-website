@@ -25,7 +25,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
 
     return (
       <button onClick={() => swiper.slideNext()}>
-        <ArrowCircle style="fill-primary w-8 h-8 lg:w-10 lg:h-10" />
+        <ArrowCircle style="pointer-events-auto fill-primary w-8 h-8 lg:w-10 lg:h-10" />
       </button>
     );
   }
@@ -34,7 +34,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
 
     return (
       <button onClick={() => swiper.slidePrev()}>
-        <ArrowCircle style="fill-primary w-8 h-8 lg:w-10 lg:h-10 rotate-180" />
+        <ArrowCircle style="pointer-events-auto fill-primary w-8 h-8 lg:w-10 lg:h-10 rotate-180" />
       </button>
     );
   }
@@ -105,7 +105,7 @@ const PortfolioDetails = ({ portfolio }: { portfolio: PortfolioProps }) => {
                 );
               })}
               {/* Slider Button */}
-              <div data-aos="zoom-out" className="absolute top-1/2 z-30 flex w-full -translate-y-1/2 transform items-center justify-between px-0">
+              <div data-aos="zoom-out" className="pointer-event-none absolute top-[calc(50%-25px)] lg:top-[calc(50%-15px)] z-30 flex w-full -translate-y-1/2 transform items-center justify-between px-0">
                 <SlidePrevButton />
                 <SlideNextButton />
               </div>

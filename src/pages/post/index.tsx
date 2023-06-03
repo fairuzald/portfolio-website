@@ -90,7 +90,7 @@ const PostDetail = ({
 const dataNaNavbar = [
   { href: "/", context: "Home" },
   { href: "/portfolio", context: "Menu Portfolio" },
-  { href: "#home", context: "Menu Post" },
+  { href: "home", context: "Menu Post" },
 ];
 
 PostDetail.getLayout = function getLayout(page: ReactElement) {

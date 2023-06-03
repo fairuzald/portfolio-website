@@ -93,7 +93,7 @@ const PortfolioPreview = ({
 };
 const dataNaNavbar = [
   { href: "/", context: "Home" },
-  { href: "#home", context: "Menu Portfolio" },
+  { href: "home", context: "Menu Portfolio" },
   { href: "/post", context: "Menu Post" },
 ];
 

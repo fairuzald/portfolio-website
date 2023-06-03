@@ -1,6 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Link as LinkSmooth } from "react-scroll";
+import Link from "next/link";
 
 interface DataProps {
   href: string;
@@ -57,7 +58,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
           <button
             id="hamburger"
             name="hamburger"
-            className="hover:color-primary absolute right-10 block lg:hidden"
+            className="hover:color-primary absolute right-10 block xl:hidden"
             onClick={handleNavbar}
           >
             <span className="hamburgerline origin-top-left transition duration-300"></span>
@@ -67,31 +68,52 @@ export default function Navbar({ data }: { data: DataProps[] }) {
           <nav
             id="nav-menu"
             className={`${
-              !navbarShow ? "opacity-0 pointer-events-none" : "flex opacity-100"
-            } transition-opacity duration-300 ease-in-out absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg lg:static lg:flex lg:max-w-full lg:rounded-none lg:bg-transparent lg:py-5 lg:shadow-none`}
+              !navbarShow ? "pointer-events-none opacity-0" : "flex opacity-100"
+            } absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg transition-opacity duration-300 ease-in-out xl:pointer-events-auto xl:static xl:flex xl:max-w-full xl:rounded-none xl:bg-transparent xl:py-5 xl:opacity-100 xl:shadow-none`}
           >
             {/* Mapping LIst Data Navbar */}
-            <ul className="flex w-full flex-col items-center lg:flex-1 lg:flex-row">
-              {data.map((item: DataProps, index: number) => (
-                <li
-                  key={index}
-                  className="list-navbar text-center cursor-pointer transition duration-300 hover:text-primary hover:opacity-90"
-                >
-                  <Link
-                    href={item.href}
-                    className="mx-8 flex py-2 font-montserrat-sb text-base tracking-widest md:text-xl"
-                    scroll={false}
-                    onClick={() => {
-                      document
-                        .querySelector("#hamburger")
-                        ?.classList.remove("hamburgeractive");
-                      setNavbarShow(false);
-                    }}
+            <ul className="flex w-full flex-col items-center xl:flex-1 xl:flex-row">
+              {data.map((item: DataProps, index: number) => {
+                const isSmoothScroll = item.href.startsWith("/");
+                return (
+                  <li
+                    key={index}
+                    className="list-navbar cursor-pointer text-center transition duration-300 hover:text-primary hover:opacity-90"
                   >
-                    {item.context}
-                  </Link>
-                </li>
-              ))}
+                    {!isSmoothScroll ? (
+                      <LinkSmooth
+                        to={item.href}
+                        spy={true}
+                        smooth={true}
+                        offset={50}
+                        duration={500}
+                        className="mx-8 flex py-2 font-montserrat-sb text-base tracking-widest md:text-xl"
+                        onClick={() => {
+                          document
+                            .querySelector("#hamburger")
+                            ?.classList.remove("hamburgeractive");
+                          setNavbarShow(false);
+                        }}
+                      >
+                        {item.context}
+                      </LinkSmooth>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className="mx-8 flex py-2 font-montserrat-sb text-base tracking-widest md:text-xl"
+                        onClick={() => {
+                          document
+                            .querySelector("#hamburger")
+                            ?.classList.remove("hamburgeractive");
+                          setNavbarShow(false);
+                        }}
+                      >
+                        {item.context}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         </div>
@@ -101,10 +123,10 @@ export default function Navbar({ data }: { data: DataProps[] }) {
 }
 Navbar.defaultProps = {
   data: [
-    { href: "#home", context: "Home" },
-    { href: "#about", context: "About" },
-    { href: "#resume", context: "Resume" },
-    { href: "#portfolio", context: "Portfolio" },
-    { href: "#post", context: "Post" },
+    { href: "home", context: "Home" },
+    { href: "about", context: "About" },
+    { href: "resume", context: "Resume" },
+    { href: "portfolio", context: "Portfolio" },
+    { href: "post", context: "Post" },
   ],
 };
