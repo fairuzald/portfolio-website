@@ -71,7 +71,7 @@ export default function Navbar({ data }: { data: DataProps[] }) {
               !navbarShow ? "pointer-events-none opacity-0" : "flex opacity-100"
             } absolute right-4 top-full w-full max-w-[40vw] rounded-lg bg-[rgb(44,48,77)] py-4 tracking-wider shadow-lg transition-opacity duration-300 ease-in-out xl:pointer-events-auto xl:static xl:flex xl:max-w-full xl:rounded-none xl:bg-transparent xl:py-5 xl:opacity-100 xl:shadow-none`}
           >
-            {/* Mapping LIst Data Navbar */}
+            {/* Mapping List Data Navbar */}
             <ul className="flex w-full flex-col items-center xl:flex-1 xl:flex-row">
               {data.map((item: DataProps, index: number) => {
                 const isSmoothScroll = item.href.startsWith("/");
